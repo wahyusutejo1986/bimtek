@@ -227,8 +227,17 @@
                         <a href="{{ route('vulnerable.dashboard') }}" class="flex items-center p-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl hover:from-red-600 hover:to-red-700 transition duration-300 transform hover:scale-105 border-2 border-red-300">
                             <i class="fas fa-bug text-2xl mr-3"></i>
                             <div>
-                                <div class="font-semibold">🚨 Vulnerabilities</div>
-                                <div class="text-sm opacity-90">Security Testing</div>
+                                <div class="font-semibold">🚨 Basic Vulnerabilities</div>
+                                <div class="text-sm opacity-90">IDOR & SQL Injection</div>
+                            </div>
+                        </a>
+
+                        <a href="{{ route('owasp.dashboard') }}" class="flex items-center p-4 bg-gradient-to-r from-purple-600 to-red-700 text-white rounded-xl hover:from-purple-700 hover:to-red-800 transition duration-300 transform hover:scale-105 border-2 border-purple-300 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-gradient-to-r from-red-600/20 to-yellow-600/20 animate-pulse"></div>
+                            <i class="fas fa-fire text-2xl mr-3 relative z-10"></i>
+                            <div class="relative z-10">
+                                <div class="font-semibold">🔥 OWASP Top 10 2021</div>
+                                <div class="text-sm opacity-90">Advanced Training Lab</div>
                             </div>
                         </a>
                     </div>
