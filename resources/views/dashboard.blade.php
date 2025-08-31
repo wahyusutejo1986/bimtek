@@ -191,7 +191,7 @@
                         <i class="fas fa-bolt mr-2 text-yellow-500"></i>
                         Quick Actions
                     </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                         <a href="{{ route('posts') }}" class="flex items-center p-4 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition duration-300 transform hover:scale-105">
                             <i class="fas fa-plus-circle text-2xl mr-3"></i>
                             <div>
@@ -221,6 +221,14 @@
                             <div>
                                 <div class="font-semibold">Profile</div>
                                 <div class="text-sm opacity-90">Account settings</div>
+                            </div>
+                        </a>
+
+                        <a href="{{ route('vulnerable.dashboard') }}" class="flex items-center p-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-xl hover:from-red-600 hover:to-red-700 transition duration-300 transform hover:scale-105 border-2 border-red-300">
+                            <i class="fas fa-bug text-2xl mr-3"></i>
+                            <div>
+                                <div class="font-semibold">🚨 Vulnerabilities</div>
+                                <div class="text-sm opacity-90">Security Testing</div>
                             </div>
                         </a>
                     </div>

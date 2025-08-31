@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\VulnerableController;
 use App\Http\Livewire\Categories\Categories;
 use App\Http\Livewire\Categories\Categoryposts;
 use App\Http\Livewire\Posts\Posts;
@@ -58,3 +59,28 @@ Route::get('dashboard/posts/{id}', p::class);
 
 Route::get('dashboard/tags', Tags::class)->name('tags');
 Route::get('dashboard/tags/{id}/posts', Tagposts::class);
+
+/*
+|--------------------------------------------------------------------------
+| Vulnerable Routes - For Cybersecurity Training Only
+|--------------------------------------------------------------------------
+|
+| These routes contain intentional security vulnerabilities for educational
+| purposes. DO NOT use in production environments!
+|
+*/
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    // Vulnerability Dashboard
+    Route::get('/vulnerable', [VulnerableController::class, 'dashboard'])->name('vulnerable.dashboard');
+    
+    // IDOR Vulnerabilities
+    Route::get('/vulnerable/post/{id}', [VulnerableController::class, 'viewPost'])->name('vulnerable.post.view');
+    Route::get('/vulnerable/post/edit/{id}', [VulnerableController::class, 'editPost'])->name('vulnerable.post.edit');
+    Route::put('/vulnerable/post/{id}', [VulnerableController::class, 'updatePost'])->name('vulnerable.post.update');
+    Route::get('/vulnerable/user/{id}', [VulnerableController::class, 'viewUserProfile'])->name('vulnerable.user.profile');
+    
+    // SQL Injection Vulnerabilities
+    Route::get('/vulnerable/search', [VulnerableController::class, 'search'])->name('vulnerable.search');
+    Route::get('/vulnerable/users', [VulnerableController::class, 'searchUsers'])->name('vulnerable.users');
+});
