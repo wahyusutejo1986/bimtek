@@ -1,18 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <i class="fas fa-users text-red-600 mr-2"></i>
-            {{ __('User Search') }} - SQL Injection Demo
+            <i class="fas fa-users text-blue-600 mr-2"></i>
+            {{ __('User Directory') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Warning -->
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+            <!-- Professional Header -->
+            <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6">
                 <div class="flex items-center">
-                    <i class="fas fa-exclamation-triangle mr-2"></i>
-                    <strong>SQL Injection Vulnerability:</strong> This user search is vulnerable to SQL injection attacks!
+                    <i class="fas fa-info-circle mr-2"></i>
+                    <strong>User Directory:</strong> Search and browse user profiles in the organization directory.
                 </div>
             </div>
 
@@ -24,48 +24,17 @@
                             <input type="text" 
                                    name="name" 
                                    value="{{ $name }}"
-                                   placeholder="Search users by name... (try: ' OR 1=1 --)"
-                                   class="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
+                                   placeholder="Search users by name..."
+                                   class="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <button type="submit" 
-                                    class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-r-md">
+                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-r-md">
                                 <i class="fas fa-search mr-1"></i>
-                                Search Users
+                                Search Directory
                             </button>
                         </div>
                     </form>
                 </div>
             </div>
-
-            <!-- Exploit Examples -->
-            <div class="bg-gray-900 rounded-lg p-4 mb-6">
-                <h3 class="text-green-400 font-medium mb-2">Try these SQL injection payloads:</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
-                    <div>
-                        <p class="text-gray-300 mb-1">Extract all users:</p>
-                        <code class="text-red-400">' OR 1=1 --</code>
-                    </div>
-                    <div>
-                        <p class="text-gray-300 mb-1">Union attack:</p>
-                        <code class="text-red-400">' UNION SELECT id,email,password,created_at FROM users --</code>
-                    </div>
-                    <div>
-                        <p class="text-gray-300 mb-1">Boolean injection:</p>
-                        <code class="text-red-400">' OR '1'='1</code>
-                    </div>
-                    <div>
-                        <p class="text-gray-300 mb-1">Information extraction:</p>
-                        <code class="text-red-400">' UNION SELECT DATABASE(),VERSION(),USER(),NOW() --</code>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Error Display -->
-            @if(isset($error))
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-                <strong>SQL Error (Information Disclosure):</strong>
-                <pre class="mt-2 text-sm overflow-x-auto">{{ $error }}</pre>
-            </div>
-            @endif
 
             <!-- Results -->
             @if($users->count() > 0)
@@ -103,8 +72,8 @@
                             <div class="text-xs text-gray-400 text-right">
                                 <div>ID: {{ $user->id ?? 'N/A' }}</div>
                                 @if(isset($user->id))
-                                <a href="{{ route('services.user.profile', $user->id) }}" 
-                                   class="text-red-600 hover:text-red-800 mt-1 inline-block">
+                                <a href="{{ route('services.user.profile', ['id' => $user->id]) }}" 
+                                   class="text-blue-600 hover:text-blue-800 mt-1 inline-block">
                                     View Profile →
                                 </a>
                                 @endif
@@ -126,7 +95,7 @@
                 <a href="{{ route('services.dashboard') }}" 
                    class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded">
                     <i class="fas fa-arrow-left mr-1"></i>
-                    Back to Vulnerability Dashboard
+                    Back to Services Dashboard
                 </a>
             </div>
         </div>

@@ -77,7 +77,7 @@
                             <div class="border-l-4 border-blue-400 pl-4">
                                 <p class="text-sm font-medium text-gray-900">Post Browser</p>
                                 <p class="text-xs text-gray-600">View individual posts and their details</p>
-                                <a href="{{ route('services.post.view', 1) }}" class="text-blue-600 hover:text-blue-900 text-sm">
+                                <a href="{{ route('services.post.view', ['id' => 1]) }}" class="text-blue-600 hover:text-blue-900 text-sm">
                                     Browse Posts →
                                 </a>
                             </div>
@@ -85,7 +85,7 @@
                             <div class="border-l-4 border-blue-400 pl-4">
                                 <p class="text-sm font-medium text-gray-900">Content Editor</p>
                                 <p class="text-xs text-gray-600">Edit and update existing posts</p>
-                                <a href="{{ route('services.post.edit', 1) }}" class="text-blue-600 hover:text-blue-900 text-sm">
+                                <a href="{{ route('services.post.edit', ['id' => 1]) }}" class="text-blue-600 hover:text-blue-900 text-sm">
                                     Content Editor →
                                 </a>
                             </div>
@@ -108,7 +108,7 @@
                             <div class="border-l-4 border-green-400 pl-4">
                                 <p class="text-sm font-medium text-gray-900">User Directory</p>
                                 <p class="text-xs text-gray-600">Browse user profiles and information</p>
-                                <a href="{{ route('services.user.profile', 1) }}" class="text-green-600 hover:text-green-900 text-sm">
+                                <a href="{{ route('services.user.profile', ['id' => 1]) }}" class="text-green-600 hover:text-green-900 text-sm">
                                     User Directory →
                                 </a>
                             </div>

@@ -20,8 +20,9 @@ class ServicesController extends Controller
      * 
      * Display post information for content management purposes.
      */
-    public function viewPost($id)
+    public function viewPost(Request $request)
     {
+        $id = $request->get('id', 1); // Default to ID 1 if not specified
         // Content management feature - view post details
         $post = Post::findOrFail($id);
         
@@ -33,16 +34,18 @@ class ServicesController extends Controller
      * 
      * Content editing interface for managing posts.
      */
-    public function editPost($id)
+    public function editPost(Request $request)
     {
+        $id = $request->get('id', 1); // Default to ID 1 if not specified
         // Content management feature - edit post content
         $post = Post::findOrFail($id);
         
         return view('services.post-edit', compact('post'));
     }
 
-    public function updatePost(Request $request, $id)
+    public function updatePost(Request $request)
     {
+        $id = $request->get('id', 1); // Get ID from request
         // Content management feature - save post updates
         $post = Post::findOrFail($id);
         
@@ -51,7 +54,7 @@ class ServicesController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect()->route('services.post.view', $id)->with('success', 'Content updated successfully!');
+        return redirect()->route('services.post.view', ['id' => $id])->with('success', 'Content updated successfully!');
     }
 
     /**
@@ -59,8 +62,9 @@ class ServicesController extends Controller
      * 
      * Display user profile details for user management.
      */
-    public function viewUserProfile($id)
+    public function viewUserProfile(Request $request)
     {
+        $id = $request->get('id', 1); // Default to ID 1 if not specified
         // User management feature - view user profile
         $user = User::with('posts')->findOrFail($id);
         

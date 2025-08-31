@@ -1,18 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <i class="fas fa-edit text-red-600 mr-2"></i>
-            {{ __('Edit Post') }} - IDOR Vulnerability
+            <i class="fas fa-edit text-blue-600 mr-2"></i>
+            {{ __('Edit Content') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <!-- Vulnerability Warning -->
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+            <!-- Professional Header -->
+            <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6">
                 <div class="flex items-center">
-                    <i class="fas fa-exclamation-triangle mr-2"></i>
-                    <strong>IDOR Vulnerability:</strong> You can edit any post by changing the ID! No ownership check performed.
+                    <i class="fas fa-info-circle mr-2"></i>
+                    <strong>Content Editor:</strong> Modify and update published content in the knowledge base.
                 </div>
             </div>
 
@@ -24,9 +24,10 @@
 
             <!-- Edit Form -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
-                <form method="POST" action="{{ route('services.post.update', $post->id) }}">
+                <form method="POST" action="{{ route('services.post.update') }}">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" name="id" value="{{ $post->id }}">
                     
                     <div class="px-4 py-5 sm:p-6">
                         <div class="mb-4">
@@ -81,57 +82,24 @@
                     <!-- Actions -->
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-between">
                         <button type="submit" 
-                                class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded">
+                                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">
                             <i class="fas fa-save mr-1"></i>
-                            Save Changes (Vulnerable)
+                            Save Changes
                         </button>
                         <div class="space-x-2">
-                            <a href="{{ route('services.post.view', $post->id) }}" 
-                               class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
+                            <a href="{{ route('services.post.view', ['id' => $post->id]) }}" 
+                               class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm">
                                 <i class="fas fa-eye mr-1"></i>
-                                View Post
+                                View Content
                             </a>
                             <a href="{{ route('services.dashboard') }}" 
                                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded text-sm">
                                 <i class="fas fa-arrow-left mr-1"></i>
-                                Back
+                                Back to Services
                             </a>
                         </div>
                     </div>
                 </form>
-            </div>
-
-            <!-- IDOR Testing Panel -->
-            <div class="mt-6 bg-gray-900 rounded-lg p-4">
-                <h3 class="text-green-400 font-medium mb-3">
-                    <i class="fas fa-bug mr-2"></i>
-                    IDOR Testing - Edit Other Posts:
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p class="text-gray-300 text-sm mb-2">Try editing these posts:</p>
-                        <div class="space-y-1">
-                            @for($i = max(1, $post->id - 2); $i <= $post->id + 2; $i++)
-                            <a href="{{ route('services.post.edit', $i) }}" 
-                               class="block text-red-400 hover:text-red-300 text-sm font-mono
-                                      {{ $i == $post->id ? 'bg-gray-800 px-2 py-1 rounded' : '' }}">
-                                /vulnerable/post/edit/{{ $i }} {{ $i == $post->id ? '(current)' : '' }}
-                            </a>
-                            @endfor
-                        </div>
-                    </div>
-                    <div>
-                        <p class="text-gray-300 text-sm mb-2">Random post editing:</p>
-                        <div class="space-y-1">
-                            @foreach([1, 10, 25, 50, 100] as $testId)
-                            <a href="{{ route('services.post.edit', $testId) }}" 
-                               class="block text-red-400 hover:text-red-300 text-sm font-mono">
-                                /vulnerable/post/edit/{{ $testId }}
-                            </a>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

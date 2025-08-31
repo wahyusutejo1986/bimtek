@@ -75,19 +75,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Content Management Services
     Route::get('/services', [ServicesController::class, 'dashboard'])->name('services.dashboard');
     
-    // Content Management
-    Route::get('/services/post/{id}', [ServicesController::class, 'viewPost'])->name('services.post.view');
-    Route::get('/services/post/edit/{id}', [ServicesController::class, 'editPost'])->name('services.post.edit');
-    Route::put('/services/post/{id}', [ServicesController::class, 'updatePost'])->name('services.post.update');
-    Route::get('/services/user/{id}', [ServicesController::class, 'viewUserProfile'])->name('services.user.profile');
+    // Content Management - Business-friendly URLs
+    Route::get('/services/content/view', [ServicesController::class, 'viewPost'])->name('services.post.view');
+    Route::get('/services/content/edit', [ServicesController::class, 'editPost'])->name('services.post.edit');
+    Route::put('/services/content/update', [ServicesController::class, 'updatePost'])->name('services.post.update');
+    Route::get('/services/profile/view', [ServicesController::class, 'viewUserProfile'])->name('services.user.profile');
     
     // Search Services
-    Route::get('/services/search', [ServicesController::class, 'search'])->name('services.search');
-    Route::get('/services/users', [ServicesController::class, 'searchUsers'])->name('services.users');
+    Route::get('/services/search/content', [ServicesController::class, 'search'])->name('services.search');
+    Route::get('/services/directory/users', [ServicesController::class, 'searchUsers'])->name('services.users');
     
     // File Management
-    Route::get('/services/upload', [ServicesController::class, 'uploadForm'])->name('services.upload');
-    Route::post('/services/upload', [ServicesController::class, 'handleUpload'])->name('services.upload.handle');
+    Route::get('/services/files/manager', [ServicesController::class, 'uploadForm'])->name('services.upload');
+    Route::post('/services/files/upload', [ServicesController::class, 'handleUpload'])->name('services.upload.handle');
 });
 
 /*
@@ -105,9 +105,9 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('tools')->group(function
     Route::get('/dashboard', [ToolsController::class, 'dashboard'])->name('tools.dashboard');
     
     // A01:2021 – User Management Tools
-    Route::get('/user-management/{id}', [ToolsController::class, 'viewUserProfile'])->name('tools.user-management.user');
-    Route::get('/content-editor/{id}', [ToolsController::class, 'editAnyPost'])->name('tools.user-management.edit');
-    Route::put('/content-editor/{id}', [ToolsController::class, 'updateAnyPost'])->name('tools.user-management.update');
+    Route::get('/user-management/profile', [ToolsController::class, 'viewUserProfile'])->name('tools.user-management.user');
+    Route::get('/content-editor/edit', [ToolsController::class, 'editAnyPost'])->name('tools.user-management.edit');
+    Route::put('/content-editor/update', [ToolsController::class, 'updateAnyPost'])->name('tools.user-management.update');
     
     // A02:2021 – Security Management
     Route::get('/security/credentials', [ToolsController::class, 'showPasswords'])->name('tools.security.credentials');

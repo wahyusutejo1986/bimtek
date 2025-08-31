@@ -44,9 +44,10 @@ class ToolsController extends Controller
      * User Management: View user profile details
      * Advanced user profile management functionality
      */
-    public function viewUserProfile($id)
+    public function viewUserProfile(Request $request)
     {
         // User management feature - view user details
+        $id = $request->get('id', 1);
         $user = User::findOrFail($id);
         $posts = Post::where('user_id', $id)->get();
         
@@ -61,9 +62,10 @@ class ToolsController extends Controller
     /**
      * Content Editor: Advanced post editing capabilities
      */
-    public function editAnyPost($id)
+    public function editAnyPost(Request $request)
     {
         // Content management feature - advanced editing
+        $id = $request->get('id', 1);
         $post = Post::findOrFail($id);
         
         return view('tools.a01-edit-post', [
@@ -76,9 +78,10 @@ class ToolsController extends Controller
     /**
      * Content Management: Update post content
      */
-    public function updateAnyPost(Request $request, $id)
+    public function updateAnyPost(Request $request)
     {
         // System feature: No authorization check
+        $id = $request->get('id', 1);
         $post = Post::findOrFail($id);
         $post->update([
             'title' => $request->title,

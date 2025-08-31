@@ -1,18 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <i class="fas fa-eye text-red-600 mr-2"></i>
-            {{ __('Post Details') }} - IDOR Vulnerability
+            <i class="fas fa-eye text-blue-600 mr-2"></i>
+            {{ __('Content Details') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <!-- Vulnerability Warning -->
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+            <!-- Professional Header -->
+            <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded mb-6">
                 <div class="flex items-center">
-                    <i class="fas fa-exclamation-triangle mr-2"></i>
-                    <strong>IDOR Vulnerability:</strong> You can view any post by changing the ID in the URL!
+                    <i class="fas fa-info-circle mr-2"></i>
+                    <strong>Content Viewer:</strong> View detailed information about published content.
                 </div>
             </div>
 
@@ -23,8 +23,7 @@
                         <div>
                             <h1 class="text-2xl font-bold text-gray-900">{{ $post->title }}</h1>
                             <p class="text-sm text-gray-600 mt-1">
-                                Post ID: <span class="font-mono bg-gray-100 px-2 py-1 rounded">{{ $post->id }}</span>
-                                | Author ID: <span class="font-mono bg-gray-100 px-2 py-1 rounded">{{ $post->author_id }}</span>
+                                Content ID: <span class="font-mono bg-gray-100 px-2 py-1 rounded">{{ $post->id }}</span>
                             </p>
                         </div>
                         <div class="text-right">
@@ -57,55 +56,22 @@
                 <!-- Actions -->
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-between">
                     <div class="flex space-x-2">
-                        <a href="{{ route('services.post.edit', $post->id) }}" 
-                           class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm">
+                        <a href="{{ route('services.post.edit', ['id' => $post->id]) }}" 
+                           class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
                             <i class="fas fa-edit mr-1"></i>
-                            Edit Post (IDOR)
+                            Edit Content
                         </a>
-                        <a href="{{ route('services.user.profile', $post->author_id) }}" 
-                           class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm">
+                        <a href="{{ route('services.user.profile', ['id' => $post->author_id]) }}" 
+                           class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm">
                             <i class="fas fa-user mr-1"></i>
-                            View Author (IDOR)
+                            View Author Profile
                         </a>
                     </div>
                     <a href="{{ route('services.dashboard') }}" 
                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded text-sm">
                         <i class="fas fa-arrow-left mr-1"></i>
-                        Back
+                        Back to Services
                     </a>
-                </div>
-            </div>
-
-            <!-- IDOR Testing Panel -->
-            <div class="mt-6 bg-gray-900 rounded-lg p-4">
-                <h3 class="text-green-400 font-medium mb-3">
-                    <i class="fas fa-bug mr-2"></i>
-                    IDOR Testing - Try These URLs:
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <p class="text-gray-300 text-sm mb-2">Previous/Next Posts:</p>
-                        <div class="space-y-1">
-                            @for($i = max(1, $post->id - 2); $i <= $post->id + 2; $i++)
-                            <a href="{{ route('services.post.view', $i) }}" 
-                               class="block text-red-400 hover:text-red-300 text-sm font-mono
-                                      {{ $i == $post->id ? 'bg-gray-800 px-2 py-1 rounded' : '' }}">
-                                /vulnerable/post/{{ $i }} {{ $i == $post->id ? '(current)' : '' }}
-                            </a>
-                            @endfor
-                        </div>
-                    </div>
-                    <div>
-                        <p class="text-gray-300 text-sm mb-2">Random Access:</p>
-                        <div class="space-y-1">
-                            @foreach([1, 10, 25, 50, 100] as $testId)
-                            <a href="{{ route('services.post.view', $testId) }}" 
-                               class="block text-red-400 hover:text-red-300 text-sm font-mono">
-                                /vulnerable/post/{{ $testId }}
-                            </a>
-                            @endforeach
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

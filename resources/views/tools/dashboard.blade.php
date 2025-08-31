@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            🔥 OWASP Top 10 2021 - Advanced Cybersecurity Training
+            � System Administration Tools
         </h2>
     </x-slot>
 
@@ -21,248 +21,248 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Header -->
             <div class="text-center mb-16">
-                <h1 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-yellow-400 to-pink-400 mb-4">
-                    🔥 OWASP Top 10 2021
+                <h1 class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 mb-4">
+                    � System Tools
                 </h1>
-                <p class="text-2xl text-gray-300 mb-8">Advanced Cybersecurity Training Laboratory</p>
+                <p class="text-2xl text-gray-300 mb-8">Advanced System Administration Center</p>
                 <div class="max-w-4xl mx-auto">
-                    <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-8 border border-red-500/30">
-                        <h2 class="text-red-400 text-xl font-bold mb-4">⚠️ EXTREME WARNING ⚠️</h2>
+                    <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-8 border border-blue-500/30">
+                        <h2 class="text-blue-400 text-xl font-bold mb-4">📋 Administration Portal</h2>
                         <p class="text-gray-300 text-lg">
-                            This laboratory contains the <strong class="text-red-400">most dangerous web vulnerabilities</strong> 
-                            according to OWASP Top 10 2021. These are real, exploitable vulnerabilities that can completely 
-                            compromise systems. Use only in <strong class="text-yellow-400">isolated training environments</strong>.
+                            This portal provides <strong class="text-blue-400">comprehensive system administration tools</strong> 
+                            for managing the platform infrastructure. Access to advanced 
+                            <strong class="text-cyan-400">management capabilities</strong> and system monitoring features.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- OWASP Top 10 Grid -->
+            <!-- System Tools Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 mb-12">
                 
-                <!-- A01: Broken Access Control -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-red-600 to-red-800">
-                        <h3 class="text-xl font-bold">A01:2021</h3>
-                        <span class="text-sm opacity-90">Critical Risk</span>
+                <!-- User Management Tools -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-blue-600 to-blue-800">
+                        <h3 class="text-xl font-bold">User Management</h3>
+                        <span class="text-sm opacity-90">Admin Tools</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-red-400 mb-3">🚪 Broken Access Control</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-blue-400 mb-3">� User Administration</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            Access any user's data, edit posts without permission, bypass authorization checks.
+                            Advanced user profile management and administrative access controls.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.a01.user', 1) }}" 
-                               class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
-                                👤 View Any User Profile
-                            </a>
-                            <a href="{{ route('tools.a01.edit', 1) }}" 
-                               class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
-                                ✏️ Edit Any Post
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- A02: Cryptographic Failures -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-orange-600 to-red-700">
-                        <h3 class="text-xl font-bold">A02:2021</h3>
-                        <span class="text-sm opacity-90">High Risk</span>
-                    </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-orange-400 mb-3">🔐 Cryptographic Failures</h4>
-                        <p class="text-gray-300 text-sm mb-4">
-                            Weak encryption, exposed password hashes, insecure data storage.
-                        </p>
-                        <div class="space-y-2">
-                            <a href="{{ route('tools.a02.passwords') }}" 
-                               class="block w-full bg-orange-600/20 hover:bg-orange-600/40 text-orange-300 py-2 px-4 rounded-lg text-center transition">
-                                🔍 View Password Hashes
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- A03: Injection -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-yellow-600 to-orange-700">
-                        <h3 class="text-xl font-bold">A03:2021</h3>
-                        <span class="text-sm opacity-90">Critical Risk</span>
-                    </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-yellow-400 mb-3">💉 Injection Attacks</h4>
-                        <p class="text-gray-300 text-sm mb-4">
-                            SQL injection in search, authentication bypass, database manipulation.
-                        </p>
-                        <div class="space-y-2">
-                            <a href="{{ route('tools.a03.search') }}" 
-                               class="block w-full bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
-                                🔍 SQL Injection Search
-                            </a>
-                            <a href="{{ route('tools.a03.login') }}" 
-                               class="block w-full bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
-                                🔓 Vulnerable Login
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- A04: Insecure Design -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-green-600 to-yellow-700">
-                        <h3 class="text-xl font-bold">A04:2021</h3>
-                        <span class="text-sm opacity-90">High Risk</span>
-                    </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-green-400 mb-3">🏗️ Insecure Design</h4>
-                        <p class="text-gray-300 text-sm mb-4">
-                            Flawed security architecture, missing security controls, design weaknesses.
-                        </p>
-                        <div class="space-y-2">
-                            <a href="{{ route('tools.a04.reset') }}" 
-                               class="block w-full bg-green-600/20 hover:bg-green-600/40 text-green-300 py-2 px-4 rounded-lg text-center transition">
-                                🔄 Insecure Password Reset
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- A05: Security Misconfiguration -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-blue-600 to-green-700">
-                        <h3 class="text-xl font-bold">A05:2021</h3>
-                        <span class="text-sm opacity-90">Medium Risk</span>
-                    </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-blue-400 mb-3">⚙️ Security Misconfiguration</h4>
-                        <p class="text-gray-300 text-sm mb-4">
-                            Debug mode enabled, sensitive info exposure, default configurations.
-                        </p>
-                        <div class="space-y-2">
-                            <a href="{{ route('tools.a05.debug') }}" 
+                            <a href="{{ route('tools.user-management.user', ['id' => 1]) }}" 
                                class="block w-full bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 py-2 px-4 rounded-lg text-center transition">
-                                🐛 Debug Information
+                                👤 User Profile Manager
+                            </a>
+                            <a href="{{ route('tools.user-management.edit', ['id' => 1]) }}" 
+                               class="block w-full bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 py-2 px-4 rounded-lg text-center transition">
+                                ✏️ Content Editor
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- A06: Vulnerable Components -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-indigo-600 to-blue-700">
-                        <h3 class="text-xl font-bold">A06:2021</h3>
-                        <span class="text-sm opacity-90">High Risk</span>
+                <!-- Security Management -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-green-600 to-green-800">
+                        <h3 class="text-xl font-bold">Security</h3>
+                        <span class="text-sm opacity-90">Data Protection</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-indigo-400 mb-3">📦 Vulnerable Components</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-green-400 mb-3">🔐 Security Management</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            Outdated libraries, dangerous functions, component vulnerabilities.
+                            Advanced security settings and credential management systems.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.a06.components') }}" 
+                            <a href="{{ route('tools.security.credentials') }}" 
+                               class="block w-full bg-green-600/20 hover:bg-green-600/40 text-green-300 py-2 px-4 rounded-lg text-center transition">
+                                🔍 Credential Manager
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Management -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-purple-600 to-purple-800">
+                        <h3 class="text-xl font-bold">Data Tools</h3>
+                        <span class="text-sm opacity-90">Database Management</span>
+                    </div>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-purple-400 mb-3">� Data Processing</h4>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Advanced database search and data management utilities.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="{{ route('tools.data.search') }}" 
+                               class="block w-full bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 py-2 px-4 rounded-lg text-center transition">
+                                🔍 Advanced Search
+                            </a>
+                            <a href="{{ route('tools.data.access') }}" 
+                               class="block w-full bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 py-2 px-4 rounded-lg text-center transition">
+                                🔓 Data Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Management -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-cyan-600 to-cyan-800">
+                        <h3 class="text-xl font-bold">Account Tools</h3>
+                        <span class="text-sm opacity-90">User Services</span>
+                    </div>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-cyan-400 mb-3">🏗️ Account Management</h4>
+                        <p class="text-gray-300 text-sm mb-4">
+                            User account recovery and password management systems.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="{{ route('tools.account.recovery') }}" 
+                               class="block w-full bg-cyan-600/20 hover:bg-cyan-600/40 text-cyan-300 py-2 px-4 rounded-lg text-center transition">
+                                🔄 Account Recovery
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Information -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-indigo-600 to-indigo-800">
+                        <h3 class="text-xl font-bold">System Info</h3>
+                        <span class="text-sm opacity-90">Monitoring</span>
+                    </div>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-indigo-400 mb-3">⚙️ System Monitor</h4>
+                        <p class="text-gray-300 text-sm mb-4">
+                            System configuration and diagnostic information tools.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="{{ route('tools.system.info') }}" 
                                class="block w-full bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 py-2 px-4 rounded-lg text-center transition">
+                                🐛 System Diagnostics
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component Management -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-teal-600 to-teal-800">
+                        <h3 class="text-xl font-bold">Components</h3>
+                        <span class="text-sm opacity-90">Library Management</span>
+                    </div>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-teal-400 mb-3">📦 Component Manager</h4>
+                        <p class="text-gray-300 text-sm mb-4">
+                            Software library analysis and component dependency management.
+                        </p>
+                        <div class="space-y-2">
+                            <a href="{{ route('tools.system.components') }}" 
+                               class="block w-full bg-teal-600/20 hover:bg-teal-600/40 text-teal-300 py-2 px-4 rounded-lg text-center transition">
                                 🧩 Component Analysis
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- A07: Authentication Failures -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-purple-600 to-indigo-700">
-                        <h3 class="text-xl font-bold">A07:2021</h3>
-                        <span class="text-sm opacity-90">High Risk</span>
+                <!-- Authentication Tools -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-orange-600 to-orange-800">
+                        <h3 class="text-xl font-bold">Authentication</h3>
+                        <span class="text-sm opacity-90">Access Control</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-purple-400 mb-3">🔑 Authentication Failures</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-orange-400 mb-3">🔑 Auth Management</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            Weak passwords, no rate limiting, detailed error messages.
+                            Authentication system configuration and access management.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.a07.auth') }}" 
-                               class="block w-full bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 py-2 px-4 rounded-lg text-center transition">
-                                🔐 Weak Authentication
+                            <a href="{{ route('tools.auth.management') }}" 
+                               class="block w-full bg-orange-600/20 hover:bg-orange-600/40 text-orange-300 py-2 px-4 rounded-lg text-center transition">
+                                🔐 Auth Configuration
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- A08: Software Integrity Failures -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-pink-600 to-purple-700">
-                        <h3 class="text-xl font-bold">A08:2021</h3>
-                        <span class="text-sm opacity-90">High Risk</span>
+                <!-- Data Processing -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-pink-600 to-pink-800">
+                        <h3 class="text-xl font-bold">Data Processing</h3>
+                        <span class="text-sm opacity-90">Data Management</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-pink-400 mb-3">🛡️ Integrity Failures</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-pink-400 mb-3">🛡️ Data Processor</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            Unsafe deserialization, untrusted sources, integrity violations.
+                            Advanced data serialization and processing utilities.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.a08.deserialize') }}" 
+                            <a href="{{ route('tools.data.processing') }}" 
                                class="block w-full bg-pink-600/20 hover:bg-pink-600/40 text-pink-300 py-2 px-4 rounded-lg text-center transition">
-                                📤 Unsafe Deserialization
+                                📤 Data Serialization
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- A09: Logging Failures -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-gray-600 to-pink-700">
-                        <h3 class="text-xl font-bold">A09:2021</h3>
-                        <span class="text-sm opacity-90">Medium Risk</span>
+                <!-- System Monitoring -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-gray-600 to-gray-800">
+                        <h3 class="text-xl font-bold">Monitoring</h3>
+                        <span class="text-sm opacity-90">System Logs</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-gray-400 mb-3">📝 Logging Failures</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-gray-400 mb-3">📝 Log Manager</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            No security logging, insufficient monitoring, audit trail gaps.
+                            System logging and monitoring dashboard for audit trails.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.a09.logging') }}" 
+                            <a href="{{ route('tools.monitoring.logs') }}" 
                                class="block w-full bg-gray-600/20 hover:bg-gray-600/40 text-gray-300 py-2 px-4 rounded-lg text-center transition">
-                                📊 Logging Analysis
+                                📊 System Logs
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- A10: SSRF -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-red-700 to-gray-700">
-                        <h3 class="text-xl font-bold">A10:2021</h3>
-                        <span class="text-sm opacity-90">High Risk</span>
+                <!-- External Services -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-red-600 to-red-800">
+                        <h3 class="text-xl font-bold">External Services</h3>
+                        <span class="text-sm opacity-90">API Management</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-red-400 mb-3">🌐 Server-Side Request Forgery</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-red-400 mb-3">🌐 Service Manager</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            Unvalidated URL fetching, internal network access, SSRF attacks.
+                            External API integration and service request management.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.a10.ssrf') }}" 
-                               class="block w-full bg-red-700/20 hover:bg-red-700/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
-                                🔗 SSRF Testing
+                            <a href="{{ route('tools.external.services') }}" 
+                               class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
+                                🔗 Service Integration
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bonus: XSS -->
-                <div class="vulnerability-card group">
-                    <div class="vulnerability-header bg-gradient-to-r from-yellow-700 to-red-800">
-                        <h3 class="text-xl font-bold">Bonus</h3>
-                        <span class="text-sm opacity-90">Critical Risk</span>
+                <!-- Content Preview -->
+                <div class="tool-card group">
+                    <div class="tool-header bg-gradient-to-r from-yellow-600 to-yellow-800">
+                        <h3 class="text-xl font-bold">Content Preview</h3>
+                        <span class="text-sm opacity-90">Content Tools</span>
                     </div>
-                    <div class="vulnerability-body">
-                        <h4 class="text-lg font-semibold text-yellow-400 mb-3">⚡ Cross-Site Scripting</h4>
+                    <div class="tool-body">
+                        <h4 class="text-lg font-semibold text-yellow-400 mb-3">⚡ Content Renderer</h4>
                         <p class="text-gray-300 text-sm mb-4">
-                            Reflected and stored XSS vulnerabilities, script injection.
+                            Dynamic content preview and rendering system for user inputs.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('tools.bonus.xss') }}" 
-                               class="block w-full bg-yellow-700/20 hover:bg-yellow-700/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
-                                ⚡ XSS Playground
+                            <a href="{{ route('tools.content.preview') }}" 
+                               class="block w-full bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
+                                ⚡ Content Preview
                             </a>
                         </div>
                     </div>
@@ -272,38 +272,38 @@
 
             <!-- Quick Reference -->
             <div class="bg-black/50 backdrop-blur-lg rounded-2xl p-8 border border-blue-500/30">
-                <h2 class="text-2xl font-bold text-blue-400 mb-6">🎓 Training Resources</h2>
+                <h2 class="text-2xl font-bold text-blue-400 mb-6">🎓 System Resources</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="text-center">
-                        <h3 class="text-lg font-semibold text-green-400 mb-2">💡 Sample Payloads</h3>
+                        <h3 class="text-lg font-semibold text-green-400 mb-2">💡 Quick Commands</h3>
                         <code class="text-sm text-gray-300 bg-gray-800 px-2 py-1 rounded">
-                            ' OR 1=1 --<br>
-                            &lt;script&gt;alert(1)&lt;/script&gt;<br>
-                            http://localhost:22/
+                            Advanced Search<br>
+                            Data Processing<br>
+                            Service Integration
                         </code>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg font-semibold text-yellow-400 mb-2">🔧 Tools</h3>
+                        <h3 class="text-lg font-semibold text-yellow-400 mb-2">🔧 System Tools</h3>
                         <p class="text-sm text-gray-300">
-                            Burp Suite, SQLmap,<br>
-                            OWASP ZAP, Nikto,<br>
-                            Browser DevTools
+                            User Management,<br>
+                            Security Settings,<br>
+                            Component Manager
                         </p>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg font-semibold text-purple-400 mb-2">📚 References</h3>
+                        <h3 class="text-lg font-semibold text-purple-400 mb-2">📚 Documentation</h3>
                         <p class="text-sm text-gray-300">
-                            OWASP Top 10 2021,<br>
-                            CWE Database,<br>
-                            NIST Guidelines
+                            System Manual,<br>
+                            API Documentation,<br>
+                            Admin Guidelines
                         </p>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-lg font-semibold text-red-400 mb-2">⚠️ Ethics</h3>
+                        <h3 class="text-lg font-semibold text-blue-400 mb-2">⚠️ Best Practices</h3>
                         <p class="text-sm text-gray-300">
-                            Training Only,<br>
-                            Authorized Testing,<br>
-                            Responsible Disclosure
+                            Authorized Use Only,<br>
+                            Data Privacy,<br>
+                            System Security
                         </p>
                     </div>
                 </div>
@@ -313,15 +313,15 @@
 </div>
 
 <style>
-.vulnerability-card {
-    @apply bg-black/60 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-600/30 hover:border-red-500/50 transition-all duration-300 transform hover:scale-105;
+.tool-card {
+    @apply bg-black/60 backdrop-blur-lg rounded-2xl overflow-hidden border border-gray-600/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105;
 }
 
-.vulnerability-header {
+.tool-header {
     @apply p-4 text-white flex justify-between items-center;
 }
 
-.vulnerability-body {
+.tool-body {
     @apply p-6;
 }
 

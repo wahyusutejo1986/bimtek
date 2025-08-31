@@ -31,7 +31,7 @@
             <div class="bg-black/60 backdrop-blur-lg rounded-2xl p-6 border border-yellow-500/30">
                 <h2 class="text-2xl font-bold text-yellow-400 mb-4">💉 SQL Injection Testing</h2>
                 
-                <form method="GET" action="{{ route('tools.a03.search') }}" class="space-y-4">
+                <form method="GET" action="{{ route('tools.data.search') }}" class="space-y-4">
                     <div>
                         <label class="block text-gray-300 text-sm font-semibold mb-2">
                             Search Posts (Vulnerable to SQL Injection)

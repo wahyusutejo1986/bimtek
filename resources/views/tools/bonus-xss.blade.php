@@ -31,7 +31,7 @@
             <div class="bg-black/60 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/30">
                 <h2 class="text-2xl font-bold text-purple-400 mb-4">⚡ XSS Vulnerability Testing</h2>
                 
-                <form method="GET" action="{{ route('tools.bonus.xss') }}" class="space-y-4">
+                <form method="GET" action="{{ route('tools.content.preview') }}" class="space-y-4">
                     <div>
                         <label class="block text-gray-300 text-sm font-semibold mb-2">
                             User Input (Reflected XSS)
@@ -131,7 +131,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
                     <h3 class="text-lg font-semibold text-orange-300 mb-3">Add Comment (Vulnerable)</h3>
-                    <form method="POST" action="{{ route('tools.bonus.comment') }}" class="space-y-4">
+                    <form method="POST" action="{{ route('tools.content.comment') }}" class="space-y-4">
                         @csrf
                         <input type="hidden" name="post_id" value="1">
                         <div>
