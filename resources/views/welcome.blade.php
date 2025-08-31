@@ -4,129 +4,583 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ env('APP_NAME') }}</title>
+        <title>{{ env('APP_NAME') }} - News Portal</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
         <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
-        </style>
-
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        
         <style>
             body {
-                font-family: 'Nunito';
+                font-family: 'Inter', sans-serif;
+            }
+            
+            .gradient-bg {
+                background: linear-gradient(135deg, #1e1b4b 0%, #312e81 25%, #4c1d95 50%, #581c87 75%, #1f2937 100%);
+                position: relative;
+            }
+            
+            .gradient-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.6);
+                z-index: 1;
+            }
+            
+            .gradient-bg > * {
+                position: relative;
+                z-index: 2;
+            }
+            
+            .text-white-contrast {
+                color: #ffffff;
+                text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.6);
+            }
+            
+            .text-white-soft {
+                color: rgba(255, 255, 255, 0.95);
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7), 0 1px 2px rgba(0, 0, 0, 0.5);
+            }
+            
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            
+            .animate-fade-in-up {
+                animation: fadeInUp 0.6s ease-out;
+            }
+            
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .hero-pattern {
+                background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Ccircle cx='5' cy='5' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+            
+            /* Dark theme floating nodes */
+            .node {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                animation: float 6s ease-in-out infinite;
+            }
+                background-image: 
+                    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+                animation: backgroundShift 20s ease-in-out infinite;
+            }
+            
+            .stats-bg {
+                background: linear-gradient(45deg, #f0f9ff 0%, #e0e7ff 50%, #fdf2f8 100%);
+                background-size: 400% 400%;
+                animation: gradientShift 15s ease infinite;
+            }
+            
+            @keyframes backgroundShift {
+                0%, 100% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+            }
+            
+            @keyframes gradientShift {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
+            
+            /* Floating Nodes Animation */
+            .floating-nodes {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: 1;
+            }
+            
+            .node {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 50%;
+                animation: float 6s ease-in-out infinite;
+            }
+            
+            .node:nth-child(1) {
+                width: 80px;
+                height: 80px;
+                left: 10%;
+                animation-delay: 0s;
+                animation-duration: 8s;
+            }
+            
+            .node:nth-child(2) {
+                width: 120px;
+                height: 120px;
+                left: 70%;
+                animation-delay: 2s;
+                animation-duration: 10s;
+            }
+            
+            .node:nth-child(3) {
+                width: 60px;
+                height: 60px;
+                left: 85%;
+                animation-delay: 4s;
+                animation-duration: 6s;
+            }
+            
+            .node:nth-child(4) {
+                width: 100px;
+                height: 100px;
+                left: 30%;
+                animation-delay: 1s;
+                animation-duration: 12s;
+            }
+            
+            .node:nth-child(5) {
+                width: 40px;
+                height: 40px;
+                left: 50%;
+                animation-delay: 3s;
+                animation-duration: 7s;
+            }
+            
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(100vh) rotate(0deg);
+                    opacity: 0;
+                }
+                10%, 90% {
+                    opacity: 1;
+                }
+                50% {
+                    transform: translateY(-100px) rotate(180deg);
+                }
+            }
+            
+            /* Geometric Background Pattern */
+            .geometric-bg {
+                background-image: 
+                    linear-gradient(30deg, transparent 40%, rgba(79, 70, 229, 0.05) 40%, rgba(79, 70, 229, 0.05) 60%, transparent 60%),
+                    linear-gradient(90deg, transparent 40%, rgba(124, 58, 237, 0.05) 40%, rgba(124, 58, 237, 0.05) 60%, transparent 60%);
+                background-size: 60px 60px;
+                animation: geometricMove 25s linear infinite;
+            }
+            
+            @keyframes geometricMove {
+                0% { background-position: 0 0, 0 0; }
+                100% { background-position: 60px 60px, -60px -60px; }
+            }
+            
+            /* Particle System */
+            .particles {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                z-index: 1;
+            }
+            
+            .particle {
+                position: absolute;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                animation: particleFloat 15s linear infinite;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            
+            .particle:nth-child(odd) {
+                background: rgba(251, 191, 36, 0.9);
+                box-shadow: 0 0 15px rgba(251, 191, 36, 0.6);
+            }
+            
+            .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
+            .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 2s; }
+            .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 4s; }
+            .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 6s; }
+            .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 8s; }
+            .particle:nth-child(6) { width: 7px; height: 7px; left: 60%; animation-delay: 10s; }
+            .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 12s; }
+            .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 14s; }
+            .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 16s; }
+            .particle:nth-child(10) { width: 6px; height: 6px; left: 95%; animation-delay: 18s; }
+            
+            @keyframes particleFloat {
+                0% {
+                    transform: translateY(100vh) translateX(0px);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                }
+                90% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100px) translateX(50px);
+                    opacity: 0;
+                }
+            }
+            
+            .btn-white {
+                background-color: #ffffff;
+                color: #4f46e5;
+                font-weight: 600;
+                border: 2px solid transparent;
+                transition: all 0.3s ease;
+            }
+            
+            .btn-white:hover {
+                background-color: #f8fafc;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            }
+            
+            .btn-outline-white {
+                background-color: transparent;
+                color: #ffffff;
+                font-weight: 600;
+                border: 2px solid #ffffff;
+                transition: all 0.3s ease;
+            }
+            
+            .btn-outline-white:hover {
+                background-color: #ffffff;
+                color: #4f46e5;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
             }
         </style>
     </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
+    <body class="antialiased bg-gray-50">
+        <!-- Navigation -->
+        <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0 flex items-center">
+                            <i class="fas fa-newspaper text-3xl text-indigo-600 mr-3"></i>
+                            <h1 class="text-2xl font-bold text-gray-900">{{ config('app.name', 'Laravel') }}</h1>
+                        </div>
+                    </div>
+                    
+                    @if (Route::has('login'))
+                        <div class="flex items-center space-x-4">
+                            @auth
+                                <a href="{{ url('/dashboard') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition duration-200 flex items-center">
+                                    <i class="fas fa-tachometer-alt mr-2"></i>
+                                    Dashboard
+                                </a>
+                            @else
+                                <a href="{{ route('login') }}" class="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition duration-200">
+                                    Login
+                                </a>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition duration-200">
+                                        Register
+                                    </a>
+                                @endif
+                            @endif
+                        </div>
                     @endif
                 </div>
-            @endif
+            </div>
+        </nav>
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
+        <!-- Hero Section -->
+        <section class="gradient-bg hero-pattern relative overflow-hidden pt-20">
+            <!-- Floating Nodes -->
+            <div class="floating-nodes">
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+            </div>
+            
+            <!-- Particles -->
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="text-center animate-fade-in-up">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white-contrast mb-6">
+                        Welcome to <span class="text-yellow-300 font-extrabold">News Portal</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-white-soft mb-8 max-w-3xl mx-auto leading-relaxed">
+                        Discover the latest news, insights, and stories from around the world. Stay informed with our comprehensive coverage.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="{{ route('login') }}" class="btn-white px-8 py-3 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-rocket mr-2"></i>
+                            Get Started
+                        </a>
+                        <a href="#features" class="btn-outline-white px-8 py-3 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Learn More
+                        </a>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute top-20 left-10 text-white/30 text-6xl animate-pulse">
+                <i class="fas fa-newspaper"></i>
+            </div>
+            <div class="absolute bottom-20 right-10 text-white/30 text-4xl animate-pulse">
+                <i class="fas fa-globe"></i>
+            </div>
+        </section>
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-white features-bg geometric-bg relative overflow-hidden">
+            <!-- Background Animation Elements -->
+            <div class="absolute top-10 left-20 w-32 h-32 bg-gradient-to-r from-blue-200 to-purple-300 rounded-full opacity-20 animate-pulse"></div>
+            <div class="absolute bottom-20 right-20 w-24 h-24 bg-gradient-to-r from-purple-200 to-pink-300 rounded-full opacity-20 animate-pulse"></div>
+            <div class="absolute top-1/2 left-10 w-16 h-16 bg-gradient-to-r from-green-200 to-blue-300 rounded-full opacity-20 animate-pulse"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">Everything you need to manage and share news content effectively</p>
+                </div>
 
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-hover bg-gradient-to-br from-blue-50 to-indigo-100 p-8 rounded-2xl">
+                        <div class="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-edit text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Content Management</h3>
+                        <p class="text-gray-600">Create, edit, and organize your posts with our intuitive content management system. Support for rich media and categorization.</p>
+                    </div>
+
+                    <div class="card-hover bg-gradient-to-br from-green-50 to-emerald-100 p-8 rounded-2xl">
+                        <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">User Authentication</h3>
+                        <p class="text-gray-600">Secure user registration and login system with role-based access control and user profile management.</p>
+                    </div>
+
+                    <div class="card-hover bg-gradient-to-br from-purple-50 to-violet-100 p-8 rounded-2xl">
+                        <div class="w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-comments text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Interactive Comments</h3>
+                        <p class="text-gray-600">Engage your audience with a robust commenting system that encourages discussion and community building.</p>
+                    </div>
+
+                    <div class="card-hover bg-gradient-to-br from-orange-50 to-red-100 p-8 rounded-2xl">
+                        <div class="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-tags text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Categories & Tags</h3>
+                        <p class="text-gray-600">Organize content with flexible categorization and tagging system for better content discovery and navigation.</p>
+                    </div>
+
+                    <div class="card-hover bg-gradient-to-br from-pink-50 to-rose-100 p-8 rounded-2xl">
+                        <div class="w-16 h-16 bg-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-photo-video text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Media Support</h3>
+                        <p class="text-gray-600">Rich media support including images and videos to make your content more engaging and visually appealing.</p>
+                    </div>
+
+                    <div class="card-hover bg-gradient-to-br from-cyan-50 to-blue-100 p-8 rounded-2xl">
+                        <div class="w-16 h-16 bg-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                            <i class="fas fa-mobile-alt text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Responsive Design</h3>
+                        <p class="text-gray-600">Fully responsive design that works perfectly on all devices - desktop, tablet, and mobile.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-20 bg-gray-50 stats-bg relative overflow-hidden">
+            <!-- Background Animation Elements -->
+            <div class="absolute top-5 right-20 w-40 h-40 bg-gradient-to-br from-indigo-300 to-purple-400 rounded-full opacity-10 animate-pulse"></div>
+            <div class="absolute bottom-10 left-20 w-28 h-28 bg-gradient-to-br from-green-300 to-blue-400 rounded-full opacity-10 animate-pulse"></div>
+            <div class="absolute top-1/3 left-1/2 w-20 h-20 bg-gradient-to-br from-orange-300 to-red-400 rounded-full opacity-10 animate-pulse"></div>
+            
+            <!-- Floating Numbers Animation -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-10 left-10 text-6xl font-bold text-indigo-200 opacity-20 animate-pulse">01</div>
+                <div class="absolute top-20 right-10 text-4xl font-bold text-green-200 opacity-20 animate-pulse">02</div>
+                <div class="absolute bottom-20 left-20 text-5xl font-bold text-purple-200 opacity-20 animate-pulse">03</div>
+                <div class="absolute bottom-10 right-20 text-3xl font-bold text-orange-200 opacity-20 animate-pulse">04</div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div class="animate-fade-in-up">
+                        <div class="text-4xl font-bold text-indigo-600 mb-2">1000+</div>
+                        <div class="text-gray-600">Articles Published</div>
+                    </div>
+                    <div class="animate-fade-in-up">
+                        <div class="text-4xl font-bold text-green-600 mb-2">50+</div>
+                        <div class="text-gray-600">Active Writers</div>
+                    </div>
+                    <div class="animate-fade-in-up">
+                        <div class="text-4xl font-bold text-purple-600 mb-2">10K+</div>
+                        <div class="text-gray-600">Monthly Readers</div>
+                    </div>
+                    <div class="animate-fade-in-up">
+                        <div class="text-4xl font-bold text-orange-600 mb-2">99%</div>
+                        <div class="text-gray-600">Uptime</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="gradient-bg py-20 relative overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="absolute inset-0">
+                <!-- Geometric Shapes -->
+                <div class="absolute top-10 left-10 w-32 h-32 border-4 border-white opacity-20 rotate-45 animate-pulse"></div>
+                <div class="absolute bottom-20 right-20 w-24 h-24 border-4 border-yellow-300 opacity-40 rounded-full animate-pulse"></div>
+                <div class="absolute top-1/2 right-10 w-16 h-16 bg-white opacity-15 transform rotate-12 animate-pulse"></div>
+                
+                <!-- Floating Particles -->
+                <div class="particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+                
+                <!-- Grid Pattern -->
+                <div class="absolute inset-0 opacity-8" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.6' fill-rule='evenodd'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20z'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-white-contrast mb-6">Ready to Get Started?</h2>
+                <p class="text-xl text-white-soft mb-8">Join our community of writers and readers today!</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="btn-white px-8 py-3 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-tachometer-alt mr-2"></i>
+                            Go to Dashboard
+                        </a>
+                    @else
+                        <a href="{{ route('register') }}" class="btn-white px-8 py-3 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Create Account
+                        </a>
+                        <a href="{{ route('login') }}" class="btn-outline-white px-8 py-3 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-sign-in-alt mr-2"></i>
+                            Sign In
+                        </a>
+                    @endauth
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-newspaper text-2xl text-indigo-400 mr-3"></i>
+                            <h3 class="text-xl font-bold">{{ config('app.name', 'Laravel') }}</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4">Your trusted source for news and information. Built with Laravel and modern web technologies.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <i class="fab fa-facebook-f"></i>
                             </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition duration-200">
+                                <i class="fab fa-instagram"></i>
                             </a>
                         </div>
                     </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Home</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">About</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Contact</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Support</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Help Center</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Documentation</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">API</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-200">Status</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-gray-400 text-sm">
+                        © {{ date('Y') }} {{ config('app.name', 'Laravel') }}. All rights reserved.
+                    </div>
+                    <div class="text-gray-400 text-sm mt-4 md:mt-0">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
+
+        <!-- Smooth Scrolling Script -->
+        <script>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
