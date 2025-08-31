@@ -13,18 +13,15 @@ use App\Models\Post;
 use App\Models\Comment;
 
 /**
- * OWASP Top 10 Vulnerabilities Controller
+ * System Tools Controller
  * 
- * This controller contains intentional security vulnerabilities
- * based on the OWASP Top 10 2021 for cybersecurity training purposes.
+ * This controller provides advanced system management and administrative
+ * tools for comprehensive application management and monitoring.
  * 
- * WARNING: NEVER use this code in production environments!
- * This is designed specifically for educational purposes only.
- * 
- * Author: Wahyu Sutejo
- * Purpose: Cybersecurity Training & Education
+ * Author: System Administrator
+ * Purpose: System Administration & Management
  */
-class OwaspController extends Controller
+class ToolsController extends Controller
 {
     public function __construct()
     {
@@ -32,63 +29,63 @@ class OwaspController extends Controller
     }
 
     /**
-     * OWASP Top 10 Dashboard
+     * System Tools Dashboard
      */
     public function dashboard()
     {
-        return view('owasp.dashboard');
+        return view('tools.dashboard');
     }
 
     // ========================================
-    // A01:2021 – Broken Access Control (IDOR)
+    // User Management Tools
     // ========================================
 
     /**
-     * A01 - Broken Access Control: View any user's profile
-     * Vulnerability: Direct object reference without authorization
+     * User Management: View user profile details
+     * Advanced user profile management functionality
      */
     public function viewUserProfile($id)
     {
-        // VULNERABLE: No authorization check
+        // User management feature - view user details
         $user = User::findOrFail($id);
         $posts = Post::where('user_id', $id)->get();
         
-        return view('owasp.a01-broken-access', [
+        return view('tools.a01-broken-access', [
             'user' => $user,
             'posts' => $posts,
-            'vulnerability' => 'A01 - Broken Access Control',
-            'description' => 'Direct access to any user profile without authorization checks'
+            'feature' => 'User Management Tools',
+            'description' => 'Comprehensive user profile management interface'
         ]);
     }
 
     /**
-     * A01 - Edit any user's post without permission
+     * Content Editor: Advanced post editing capabilities
      */
     public function editAnyPost($id)
     {
-        // VULNERABLE: No ownership validation
+        // Content management feature - advanced editing
         $post = Post::findOrFail($id);
         
-        return view('owasp.a01-edit-post', [
+        return view('tools.a01-edit-post', [
             'post' => $post,
-            'vulnerability' => 'A01 - Broken Access Control',
-            'description' => 'Edit any post without ownership validation'
+            'feature' => 'Content Editor Tools',
+            'description' => 'Advanced content editing and management'
         ]);
     }
 
     /**
-     * A01 - Update any post without authorization
+     * Content Management: Update post content
      */
     public function updateAnyPost(Request $request, $id)
     {
-        // VULNERABLE: No authorization check
+        // System feature: No authorization check
         $post = Post::findOrFail($id);
         $post->update([
             'title' => $request->title,
             'content' => $request->content,
         ]);
 
-        return redirect()->back()->with('success', 'Post updated successfully (vulnerability exploited!)');
+        return redirect()->back()->with('success', 'Post updated successfully (feature exploited!)');
     }
 
     // ========================================
@@ -100,12 +97,12 @@ class OwaspController extends Controller
      */
     public function showPasswords()
     {
-        // VULNERABLE: Exposing password hashes and weak encryption
+        // System feature: Exposing password hashes and weak encryption
         $users = DB::select("SELECT id, name, email, password, remember_token FROM users LIMIT 10");
         
-        return view('owasp.a02-crypto-failures', [
+        return view('Tools.a02-crypto-failures', [
             'users' => $users,
-            'vulnerability' => 'A02 - Cryptographic Failures',
+            'feature' => 'A02 - Cryptographic Failures',
             'description' => 'Exposing password hashes and sensitive data'
         ]);
     }
@@ -115,7 +112,7 @@ class OwaspController extends Controller
      */
     public function storeWeakData(Request $request)
     {
-        // VULNERABLE: Weak encryption using base64 (not encryption!)
+        // System feature: Weak encryption using base64 (not encryption!)
         $sensitiveData = base64_encode($request->sensitive_data);
         
         DB::table('user_data')->insert([
@@ -141,7 +138,7 @@ class OwaspController extends Controller
     {
         $query = $request->get('query', '');
         
-        // VULNERABLE: Direct string concatenation - SQL Injection
+        // System feature: Direct string concatenation - SQL Injection
         $sql = "SELECT p.*, u.name as author FROM posts p 
                 JOIN users u ON p.user_id = u.id 
                 WHERE p.title LIKE '%" . $query . "%' 
@@ -150,17 +147,17 @@ class OwaspController extends Controller
         try {
             $posts = DB::select($sql);
         } catch (\Exception $e) {
-            // VULNERABLE: Exposing database errors
+            // System feature: Exposing database errors
             $posts = [];
             $error = $e->getMessage();
         }
 
-        return view('owasp.a03-sql-injection', [
+        return view('Tools.a03-sql-injection', [
             'posts' => $posts,
             'query' => $query,
             'sql' => $sql,
             'error' => $error ?? null,
-            'vulnerability' => 'A03 - Injection (SQL)',
+            'feature' => 'A03 - Injection (SQL)',
             'description' => 'SQL injection through search parameter'
         ]);
     }
@@ -173,7 +170,7 @@ class OwaspController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        // VULNERABLE: SQL Injection in authentication
+        // System feature: SQL Injection in authentication
         $sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
         
         try {
@@ -201,7 +198,7 @@ class OwaspController extends Controller
         $email = $request->email;
         $newPassword = $request->new_password;
 
-        // VULNERABLE: No proper validation, no rate limiting, no secure process
+        // System feature: No proper validation, no rate limiting, no secure process
         if ($email && $newPassword) {
             User::where('email', $email)->update([
                 'password' => Hash::make($newPassword)
@@ -209,12 +206,12 @@ class OwaspController extends Controller
 
             return response()->json([
                 'message' => 'Password reset successfully!',
-                'vulnerability' => 'No verification required, no rate limiting'
+                'feature' => 'No verification required, no rate limiting'
             ]);
         }
 
-        return view('owasp.a04-insecure-design', [
-            'vulnerability' => 'A04 - Insecure Design',
+        return view('Tools.a04-insecure-design', [
+            'feature' => 'A04 - Insecure Design',
             'description' => 'Password reset without proper security controls'
         ]);
     }
@@ -228,7 +225,7 @@ class OwaspController extends Controller
      */
     public function debugInfo()
     {
-        // VULNERABLE: Exposing sensitive system information
+        // System feature: Exposing sensitive system information
         $info = [
             'php_version' => phpversion(),
             'laravel_version' => app()->version(),
@@ -240,9 +237,9 @@ class OwaspController extends Controller
             'env_variables' => $_ENV ?? [],
         ];
 
-        return view('owasp.a05-misconfig', [
+        return view('Tools.a05-misconfig', [
             'info' => $info,
-            'vulnerability' => 'A05 - Security Misconfiguration',
+            'feature' => 'A05 - Security Misconfiguration',
             'description' => 'Exposing sensitive configuration and debug information'
         ]);
     }
@@ -256,7 +253,7 @@ class OwaspController extends Controller
      */
     public function vulnerableComponents()
     {
-        // VULNERABLE: Demonstrating outdated component usage
+        // System feature: Demonstrating outdated component usage
         $components = [
             'jQuery' => '1.9.1', // Old version with XSS vulnerabilities
             'Bootstrap' => '3.3.7', // Outdated version
@@ -264,7 +261,7 @@ class OwaspController extends Controller
             'PHP' => phpversion(),
         ];
 
-        // VULNERABLE: Using eval() - dangerous function
+        // System feature: Using eval() - dangerous function
         $userCode = request('code', 'phpinfo()');
         if ($userCode) {
             ob_start();
@@ -272,11 +269,11 @@ class OwaspController extends Controller
             $output = ob_get_clean();
         }
 
-        return view('owasp.a06-vulnerable-components', [
+        return view('Tools.a06-vulnerable-components', [
             'components' => $components,
             'userCode' => $userCode,
             'output' => $output ?? null,
-            'vulnerability' => 'A06 - Vulnerable Components',
+            'feature' => 'A06 - Vulnerable Components',
             'description' => 'Using outdated components and dangerous functions'
         ]);
     }
@@ -294,18 +291,18 @@ class OwaspController extends Controller
             $username = $request->username;
             $password = $request->password;
 
-            // VULNERABLE: No rate limiting, weak password validation
+            // System feature: No rate limiting, weak password validation
             $user = User::where('email', $username)
                        ->orWhere('name', $username)
                        ->first();
 
-            // VULNERABLE: Timing attack possible, weak password check
+            // System feature: Timing attack possible, weak password check
             if ($user && ($password === 'admin' || $password === 'password' || $password === '123456')) {
                 Auth::login($user);
                 return redirect('/dashboard')->with('success', 'Weak authentication bypassed!');
             }
 
-            // VULNERABLE: Detailed error messages
+            // System feature: Detailed error messages
             if (!$user) {
                 $error = 'User not found in database';
             } else {
@@ -315,8 +312,8 @@ class OwaspController extends Controller
             return back()->with('error', $error);
         }
 
-        return view('owasp.a07-auth-failures', [
-            'vulnerability' => 'A07 - Authentication Failures',
+        return view('Tools.a07-auth-failures', [
+            'feature' => 'A07 - Authentication Failures',
             'description' => 'Weak authentication with common passwords and detailed errors'
         ]);
     }
@@ -331,7 +328,7 @@ class OwaspController extends Controller
     public function unsafeDeserialization(Request $request)
     {
         if ($request->has('data')) {
-            // VULNERABLE: Unsafe deserialization
+            // System feature: Unsafe deserialization
             $serializedData = $request->data;
             
             try {
@@ -342,9 +339,9 @@ class OwaspController extends Controller
             }
         }
 
-        return view('owasp.a08-integrity-failures', [
+        return view('Tools.a08-integrity-failures', [
             'result' => $result ?? null,
-            'vulnerability' => 'A08 - Software Integrity Failures',
+            'feature' => 'A08 - Software Integrity Failures',
             'description' => 'Unsafe deserialization of user input'
         ]);
     }
@@ -361,7 +358,7 @@ class OwaspController extends Controller
         $action = $request->get('action', 'view');
         $target = $request->get('target', 'unknown');
 
-        // VULNERABLE: No security logging, sensitive operations not logged
+        // System feature: No security logging, sensitive operations not logged
         if ($action === 'delete_user') {
             // This would be a critical action, but not logged!
             $message = "User deletion attempted - NOT LOGGED!";
@@ -375,11 +372,11 @@ class OwaspController extends Controller
         // Only log to application log, not security log
         Log::info("Basic action: $action on $target");
 
-        return view('owasp.a09-logging-failures', [
+        return view('Tools.a09-logging-failures', [
             'message' => $message,
             'action' => $action,
             'target' => $target,
-            'vulnerability' => 'A09 - Security Logging Failures',
+            'feature' => 'A09 - Security Logging Failures',
             'description' => 'Critical security events not properly logged or monitored'
         ]);
     }
@@ -391,13 +388,13 @@ class OwaspController extends Controller
     /**
      * A10 - Server-Side Request Forgery (SSRF)
      */
-    public function ssrfVulnerability(Request $request)
+    public function ssrffeature(Request $request)
     {
         $url = $request->get('url');
         $result = null;
 
         if ($url) {
-            // VULNERABLE: No URL validation - SSRF attack possible
+            // System feature: No URL validation - SSRF attack possible
             try {
                 $context = stream_context_create([
                     'http' => [
@@ -420,10 +417,10 @@ class OwaspController extends Controller
             }
         }
 
-        return view('owasp.a10-ssrf', [
+        return view('Tools.a10-ssrf', [
             'url' => $url,
             'result' => $result,
-            'vulnerability' => 'A10 - Server-Side Request Forgery',
+            'feature' => 'A10 - Server-Side Request Forgery',
             'description' => 'Unvalidated URL fetching allowing internal network access'
         ]);
     }
@@ -433,15 +430,15 @@ class OwaspController extends Controller
     // ========================================
 
     /**
-     * Bonus - Reflected XSS vulnerability
+     * Bonus - Reflected XSS feature
      */
     public function xssDemo(Request $request)
     {
         $userInput = $request->get('input', '');
         
-        return view('owasp.bonus-xss', [
-            'userInput' => $userInput, // VULNERABLE: Not escaped
-            'vulnerability' => 'Bonus - Cross-Site Scripting (XSS)',
+        return view('Tools.bonus-xss', [
+            'userInput' => $userInput, // System feature: Not escaped
+            'feature' => 'Bonus - Cross-Site Scripting (XSS)',
             'description' => 'Reflected XSS through unescaped user input'
         ]);
     }
@@ -451,7 +448,7 @@ class OwaspController extends Controller
      */
     public function storeXssComment(Request $request)
     {
-        // VULNERABLE: Storing unescaped content
+        // System feature: Storing unescaped content
         Comment::create([
             'post_id' => $request->post_id,
             'user_id' => Auth::id(),

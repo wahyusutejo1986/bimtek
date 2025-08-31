@@ -57,18 +57,18 @@
                 <!-- Actions -->
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-between">
                     <div class="flex space-x-2">
-                        <a href="{{ route('vulnerable.post.edit', $post->id) }}" 
+                        <a href="{{ route('services.post.edit', $post->id) }}" 
                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm">
                             <i class="fas fa-edit mr-1"></i>
                             Edit Post (IDOR)
                         </a>
-                        <a href="{{ route('vulnerable.user.profile', $post->author_id) }}" 
+                        <a href="{{ route('services.user.profile', $post->author_id) }}" 
                            class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm">
                             <i class="fas fa-user mr-1"></i>
                             View Author (IDOR)
                         </a>
                     </div>
-                    <a href="{{ route('vulnerable.dashboard') }}" 
+                    <a href="{{ route('services.dashboard') }}" 
                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded text-sm">
                         <i class="fas fa-arrow-left mr-1"></i>
                         Back
@@ -87,7 +87,7 @@
                         <p class="text-gray-300 text-sm mb-2">Previous/Next Posts:</p>
                         <div class="space-y-1">
                             @for($i = max(1, $post->id - 2); $i <= $post->id + 2; $i++)
-                            <a href="{{ route('vulnerable.post.view', $i) }}" 
+                            <a href="{{ route('services.post.view', $i) }}" 
                                class="block text-red-400 hover:text-red-300 text-sm font-mono
                                       {{ $i == $post->id ? 'bg-gray-800 px-2 py-1 rounded' : '' }}">
                                 /vulnerable/post/{{ $i }} {{ $i == $post->id ? '(current)' : '' }}
@@ -99,7 +99,7 @@
                         <p class="text-gray-300 text-sm mb-2">Random Access:</p>
                         <div class="space-y-1">
                             @foreach([1, 10, 25, 50, 100] as $testId)
-                            <a href="{{ route('vulnerable.post.view', $testId) }}" 
+                            <a href="{{ route('services.post.view', $testId) }}" 
                                class="block text-red-400 hover:text-red-300 text-sm font-mono">
                                 /vulnerable/post/{{ $testId }}
                             </a>

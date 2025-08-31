@@ -19,11 +19,11 @@
 
         <!-- Navigation -->
         <div class="mb-8 text-center">
-            <a href="{{ route('owasp.dashboard') }}" 
+            <a href="{{ route('tools.dashboard') }}" 
                class="inline-block bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-lg mr-4 transition">
                 ← Back to OWASP Dashboard
             </a>
-            <a href="{{ route('owasp.a01.user', ['id' => rand(1, 10)]) }}" 
+            <a href="{{ route('tools.a01.user', ['id' => rand(1, 10)]) }}" 
                class="inline-block bg-red-600 hover:bg-red-500 text-white px-6 py-2 rounded-lg transition">
                 🎲 Random User Profile
             </a>
@@ -74,11 +74,11 @@
 
                 <!-- Action Buttons (Vulnerable) -->
                 <div class="mt-6 space-y-2">
-                    <a href="{{ route('owasp.a01.user', ['id' => $user->id - 1]) }}" 
+                    <a href="{{ route('tools.a01.user', ['id' => $user->id - 1]) }}" 
                        class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
                         ← Previous User (ID: {{ $user->id - 1 }})
                     </a>
-                    <a href="{{ route('owasp.a01.user', ['id' => $user->id + 1]) }}" 
+                    <a href="{{ route('tools.a01.user', ['id' => $user->id + 1]) }}" 
                        class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
                         Next User (ID: {{ $user->id + 1 }}) →
                     </a>
@@ -97,7 +97,7 @@
                             <p class="text-gray-300 text-sm mb-3">{{ Str::limit($post->content, 100) }}</p>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-400 text-xs">{{ $post->created_at->diffForHumans() }}</span>
-                                <a href="{{ route('owasp.a01.edit', $post->id) }}" 
+                                <a href="{{ route('tools.a01.edit', $post->id) }}" 
                                    class="bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 px-3 py-1 rounded text-sm transition">
                                     ✏️ Edit (No Auth Check!)
                                 </a>

@@ -24,7 +24,7 @@
 
             <!-- Edit Form -->
             <div class="bg-white overflow-hidden shadow rounded-lg">
-                <form method="POST" action="{{ route('vulnerable.post.update', $post->id) }}">
+                <form method="POST" action="{{ route('services.post.update', $post->id) }}">
                     @csrf
                     @method('PUT')
                     
@@ -86,12 +86,12 @@
                             Save Changes (Vulnerable)
                         </button>
                         <div class="space-x-2">
-                            <a href="{{ route('vulnerable.post.view', $post->id) }}" 
+                            <a href="{{ route('services.post.view', $post->id) }}" 
                                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm">
                                 <i class="fas fa-eye mr-1"></i>
                                 View Post
                             </a>
-                            <a href="{{ route('vulnerable.dashboard') }}" 
+                            <a href="{{ route('services.dashboard') }}" 
                                class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded text-sm">
                                 <i class="fas fa-arrow-left mr-1"></i>
                                 Back
@@ -112,7 +112,7 @@
                         <p class="text-gray-300 text-sm mb-2">Try editing these posts:</p>
                         <div class="space-y-1">
                             @for($i = max(1, $post->id - 2); $i <= $post->id + 2; $i++)
-                            <a href="{{ route('vulnerable.post.edit', $i) }}" 
+                            <a href="{{ route('services.post.edit', $i) }}" 
                                class="block text-red-400 hover:text-red-300 text-sm font-mono
                                       {{ $i == $post->id ? 'bg-gray-800 px-2 py-1 rounded' : '' }}">
                                 /vulnerable/post/edit/{{ $i }} {{ $i == $post->id ? '(current)' : '' }}
@@ -124,7 +124,7 @@
                         <p class="text-gray-300 text-sm mb-2">Random post editing:</p>
                         <div class="space-y-1">
                             @foreach([1, 10, 25, 50, 100] as $testId)
-                            <a href="{{ route('vulnerable.post.edit', $testId) }}" 
+                            <a href="{{ route('services.post.edit', $testId) }}" 
                                class="block text-red-400 hover:text-red-300 text-sm font-mono">
                                 /vulnerable/post/edit/{{ $testId }}
                             </a>

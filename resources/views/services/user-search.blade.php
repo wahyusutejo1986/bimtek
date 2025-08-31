@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <i class="fas fa-search text-red-600 mr-2"></i>
-            {{ __('Vulnerable Search') }} - SQL Injection Demo
+            <i class="fas fa-users text-red-600 mr-2"></i>
+            {{ __('User Search') }} - SQL Injection Demo
         </h2>
     </x-slot>
 
@@ -12,24 +12,24 @@
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
                 <div class="flex items-center">
                     <i class="fas fa-exclamation-triangle mr-2"></i>
-                    <strong>SQL Injection Vulnerability:</strong> This search is vulnerable to SQL injection attacks!
+                    <strong>SQL Injection Vulnerability:</strong> This user search is vulnerable to SQL injection attacks!
                 </div>
             </div>
 
             <!-- Search Form -->
             <div class="bg-white overflow-hidden shadow rounded-lg mb-6">
                 <div class="px-4 py-5 sm:p-6">
-                    <form method="GET" action="{{ route('vulnerable.search') }}">
+                    <form method="GET" action="{{ route('services.users') }}">
                         <div class="flex">
                             <input type="text" 
-                                   name="query" 
-                                   value="{{ $query }}"
-                                   placeholder="Search posts... (try: ' OR 1=1 --)"
+                                   name="name" 
+                                   value="{{ $name }}"
+                                   placeholder="Search users by name... (try: ' OR 1=1 --)"
                                    class="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500">
                             <button type="submit" 
                                     class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-r-md">
                                 <i class="fas fa-search mr-1"></i>
-                                Search
+                                Search Users
                             </button>
                         </div>
                     </form>
@@ -41,11 +41,11 @@
                 <h3 class="text-green-400 font-medium mb-2">Try these SQL injection payloads:</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
                     <div>
-                        <p class="text-gray-300 mb-1">Basic injection:</p>
+                        <p class="text-gray-300 mb-1">Extract all users:</p>
                         <code class="text-red-400">' OR 1=1 --</code>
                     </div>
                     <div>
-                        <p class="text-gray-300 mb-1">Union injection:</p>
+                        <p class="text-gray-300 mb-1">Union attack:</p>
                         <code class="text-red-400">' UNION SELECT id,email,password,created_at FROM users --</code>
                     </div>
                     <div>
@@ -53,8 +53,8 @@
                         <code class="text-red-400">' OR '1'='1</code>
                     </div>
                     <div>
-                        <p class="text-gray-300 mb-1">Time-based injection:</p>
-                        <code class="text-red-400">' OR SLEEP(5) --</code>
+                        <p class="text-gray-300 mb-1">Information extraction:</p>
+                        <code class="text-red-400">' UNION SELECT DATABASE(),VERSION(),USER(),NOW() --</code>
                     </div>
                 </div>
             </div>
@@ -62,58 +62,68 @@
             <!-- Error Display -->
             @if(isset($error))
             <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
-                <strong>SQL Error:</strong>
-                <pre class="mt-2 text-sm">{{ $error }}</pre>
+                <strong>SQL Error (Information Disclosure):</strong>
+                <pre class="mt-2 text-sm overflow-x-auto">{{ $error }}</pre>
             </div>
             @endif
 
             <!-- Results -->
-            @if($posts->count() > 0)
+            @if($users->count() > 0)
             <div class="bg-white shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        Search Results ({{ $posts->count() }} found)
+                        User Search Results ({{ $users->count() }} found)
                     </h3>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                        Query: <code class="bg-gray-100 px-2 py-1 rounded">{{ $query }}</code>
+                        Query: <code class="bg-gray-100 px-2 py-1 rounded">{{ $name }}</code>
                     </p>
                 </div>
                 <ul class="divide-y divide-gray-200">
-                    @foreach($posts as $post)
+                    @foreach($users as $user)
                     <li class="px-4 py-4">
                         <div class="flex items-center justify-between">
-                            <div class="flex-1">
-                                <h4 class="text-sm font-medium text-gray-900">
-                                    {{ $post->title ?? 'N/A' }}
-                                </h4>
-                                <p class="text-sm text-gray-600">
-                                    by {{ $post->first_name ?? 'Unknown' }} {{ $post->last_name ?? '' }} 
-                                    in {{ $post->category_name ?? 'N/A' }}
-                                </p>
-                                @if(isset($post->content))
-                                <p class="text-xs text-gray-500 mt-1">
-                                    {{ Str::limit($post->content, 100) }}
-                                </p>
-                                @endif
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-gray-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="text-sm font-medium text-gray-900">
+                                        {{ $user->first_name ?? 'N/A' }} {{ $user->last_name ?? '' }}
+                                    </h4>
+                                    <p class="text-sm text-gray-600">
+                                        📧 {{ $user->email ?? 'N/A' }}
+                                    </p>
+                                    @if(isset($user->created_at))
+                                    <p class="text-xs text-gray-500">
+                                        Joined: {{ date('M d, Y', strtotime($user->created_at)) }}
+                                    </p>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="text-xs text-gray-400">
-                                ID: {{ $post->id ?? 'N/A' }}
+                            <div class="text-xs text-gray-400 text-right">
+                                <div>ID: {{ $user->id ?? 'N/A' }}</div>
+                                @if(isset($user->id))
+                                <a href="{{ route('services.user.profile', $user->id) }}" 
+                                   class="text-red-600 hover:text-red-800 mt-1 inline-block">
+                                    View Profile →
+                                </a>
+                                @endif
                             </div>
                         </div>
                     </li>
                     @endforeach
                 </ul>
             </div>
-            @elseif(!empty($query))
+            @elseif(!empty($name))
             <div class="text-center py-8">
-                <i class="fas fa-search text-gray-400 text-3xl mb-2"></i>
-                <p class="text-gray-600">No results found for: <strong>{{ $query }}</strong></p>
+                <i class="fas fa-users text-gray-400 text-3xl mb-2"></i>
+                <p class="text-gray-600">No users found for: <strong>{{ $name }}</strong></p>
             </div>
             @endif
 
             <!-- Back to Dashboard -->
             <div class="mt-6">
-                <a href="{{ route('vulnerable.dashboard') }}" 
+                <a href="{{ route('services.dashboard') }}" 
                    class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded">
                     <i class="fas fa-arrow-left mr-1"></i>
                     Back to Vulnerability Dashboard

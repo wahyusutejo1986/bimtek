@@ -19,7 +19,7 @@
 
         <!-- Navigation -->
         <div class="mb-8 text-center">
-            <a href="{{ route('owasp.dashboard') }}" 
+            <a href="{{ route('tools.dashboard') }}" 
                class="inline-block bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition">
                 ← Back to OWASP Dashboard
             </a>
@@ -31,7 +31,7 @@
             <div class="bg-black/60 backdrop-blur-lg rounded-2xl p-6 border border-yellow-500/30">
                 <h2 class="text-2xl font-bold text-yellow-400 mb-4">💉 SQL Injection Testing</h2>
                 
-                <form method="GET" action="{{ route('owasp.a03.search') }}" class="space-y-4">
+                <form method="GET" action="{{ route('tools.a03.search') }}" class="space-y-4">
                     <div>
                         <label class="block text-gray-300 text-sm font-semibold mb-2">
                             Search Posts (Vulnerable to SQL Injection)

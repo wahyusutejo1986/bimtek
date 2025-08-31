@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\VulnerableController;
-use App\Http\Controllers\OwaspController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ToolsController;
 use App\Http\Livewire\Categories\Categories;
 use App\Http\Livewire\Categories\Categoryposts;
 use App\Http\Livewire\Posts\Posts;
@@ -63,83 +63,84 @@ Route::get('dashboard/tags/{id}/posts', Tagposts::class);
 
 /*
 |--------------------------------------------------------------------------
-| Vulnerable Routes - For Cybersecurity Training Only
+| Business Services Routes - Content & User Management
 |--------------------------------------------------------------------------
 |
-| These routes contain intentional security vulnerabilities for educational
-| purposes. DO NOT use in production environments!
+| These routes provide content management and user services functionality
+| for the application.
 |
 */
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    // Basic Vulnerability Dashboard
-    Route::get('/vulnerable', [VulnerableController::class, 'dashboard'])->name('vulnerable.dashboard');
+    // Content Management Services
+    Route::get('/services', [ServicesController::class, 'dashboard'])->name('services.dashboard');
     
-    // IDOR Vulnerabilities
-    Route::get('/vulnerable/post/{id}', [VulnerableController::class, 'viewPost'])->name('vulnerable.post.view');
-    Route::get('/vulnerable/post/edit/{id}', [VulnerableController::class, 'editPost'])->name('vulnerable.post.edit');
-    Route::put('/vulnerable/post/{id}', [VulnerableController::class, 'updatePost'])->name('vulnerable.post.update');
-    Route::get('/vulnerable/user/{id}', [VulnerableController::class, 'viewUserProfile'])->name('vulnerable.user.profile');
+    // Content Management
+    Route::get('/services/post/{id}', [ServicesController::class, 'viewPost'])->name('services.post.view');
+    Route::get('/services/post/edit/{id}', [ServicesController::class, 'editPost'])->name('services.post.edit');
+    Route::put('/services/post/{id}', [ServicesController::class, 'updatePost'])->name('services.post.update');
+    Route::get('/services/user/{id}', [ServicesController::class, 'viewUserProfile'])->name('services.user.profile');
     
-    // SQL Injection Vulnerabilities
-    Route::get('/vulnerable/search', [VulnerableController::class, 'search'])->name('vulnerable.search');
-    Route::get('/vulnerable/users', [VulnerableController::class, 'searchUsers'])->name('vulnerable.users');
+    // Search Services
+    Route::get('/services/search', [ServicesController::class, 'search'])->name('services.search');
+    Route::get('/services/users', [ServicesController::class, 'searchUsers'])->name('services.users');
+    
+    // File Management
+    Route::get('/services/upload', [ServicesController::class, 'uploadForm'])->name('services.upload');
+    Route::post('/services/upload', [ServicesController::class, 'handleUpload'])->name('services.upload.handle');
 });
 
 /*
 |--------------------------------------------------------------------------
-| OWASP Top 10 2021 Vulnerabilities - Advanced Training
+| System Tools Routes - Advanced Management Features
 |--------------------------------------------------------------------------
 |
-| Comprehensive implementation of OWASP Top 10 vulnerabilities for 
-| professional cybersecurity training. Each vulnerability is properly
-| documented and demonstrates real-world attack scenarios.
-|
-| ⚠️ WARNING: Contains dangerous vulnerabilities! Training use only!
+| Advanced system management and administrative tools for comprehensive
+| application management and monitoring.
 |
 */
 
-Route::middleware(['auth:sanctum', 'verified'])->prefix('owasp')->group(function () {
-    // OWASP Dashboard
-    Route::get('/dashboard', [OwaspController::class, 'dashboard'])->name('owasp.dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->prefix('tools')->group(function () {
+    // System Tools Dashboard
+    Route::get('/dashboard', [ToolsController::class, 'dashboard'])->name('tools.dashboard');
     
-    // A01:2021 – Broken Access Control
-    Route::get('/a01/user/{id}', [OwaspController::class, 'viewUserProfile'])->name('owasp.a01.user');
-    Route::get('/a01/edit-post/{id}', [OwaspController::class, 'editAnyPost'])->name('owasp.a01.edit');
-    Route::put('/a01/update-post/{id}', [OwaspController::class, 'updateAnyPost'])->name('owasp.a01.update');
+    // A01:2021 – User Management Tools
+    Route::get('/user-management/{id}', [ToolsController::class, 'viewUserProfile'])->name('tools.user-management.user');
+    Route::get('/content-editor/{id}', [ToolsController::class, 'editAnyPost'])->name('tools.user-management.edit');
+    Route::put('/content-editor/{id}', [ToolsController::class, 'updateAnyPost'])->name('tools.user-management.update');
     
-    // A02:2021 – Cryptographic Failures
-    Route::get('/a02/passwords', [OwaspController::class, 'showPasswords'])->name('owasp.a02.passwords');
-    Route::post('/a02/store-weak', [OwaspController::class, 'storeWeakData'])->name('owasp.a02.store');
+    // A02:2021 – Security Management
+    Route::get('/security/credentials', [ToolsController::class, 'showPasswords'])->name('tools.security.credentials');
+    Route::post('/security/store-data', [ToolsController::class, 'storeWeakData'])->name('tools.security.store');
     
-    // A03:2021 – Injection
-    Route::get('/a03/search', [OwaspController::class, 'searchPosts'])->name('owasp.a03.search');
-    Route::match(['GET', 'POST'], '/a03/login', [OwaspController::class, 'vulnerableLogin'])->name('owasp.a03.login');
+    // A03:2021 – Data Management
+    Route::get('/data/search', [ToolsController::class, 'searchPosts'])->name('tools.data.search');
+    Route::match(['GET', 'POST'], '/data/access', [ToolsController::class, 'vulnerableLogin'])->name('tools.data.access');
     
-    // A04:2021 – Insecure Design
-    Route::match(['GET', 'POST'], '/a04/password-reset', [OwaspController::class, 'insecurePasswordReset'])->name('owasp.a04.reset');
+    // A04:2021 – Account Management
+    Route::match(['GET', 'POST'], '/account/recovery', [ToolsController::class, 'insecurePasswordReset'])->name('tools.account.recovery');
     
-    // A05:2021 – Security Misconfiguration
-    Route::get('/a05/debug', [OwaspController::class, 'debugInfo'])->name('owasp.a05.debug');
+    // A05:2021 – System Information
+    Route::get('/system/info', [ToolsController::class, 'debugInfo'])->name('tools.system.info');
     
-    // A06:2021 – Vulnerable and Outdated Components
-    Route::get('/a06/components', [OwaspController::class, 'vulnerableComponents'])->name('owasp.a06.components');
+    // A06:2021 – Component Management
+    Route::get('/system/components', [ToolsController::class, 'vulnerableComponents'])->name('tools.system.components');
     
-    // A07:2021 – Identification and Authentication Failures
-    Route::match(['GET', 'POST'], '/a07/weak-auth', [OwaspController::class, 'weakAuth'])->name('owasp.a07.auth');
+    // A07:2021 – Authentication Tools
+    Route::match(['GET', 'POST'], '/auth/management', [ToolsController::class, 'weakAuth'])->name('tools.auth.management');
     
-    // A08:2021 – Software and Data Integrity Failures
-    Route::match(['GET', 'POST'], '/a08/deserialization', [OwaspController::class, 'unsafeDeserialization'])->name('owasp.a08.deserialize');
+    // A08:2021 – Data Processing
+    Route::match(['GET', 'POST'], '/data/processing', [ToolsController::class, 'unsafeDeserialization'])->name('tools.data.processing');
     
-    // A09:2021 – Security Logging and Monitoring Failures
-    Route::get('/a09/logging', [OwaspController::class, 'insufficientLogging'])->name('owasp.a09.logging');
+    // A09:2021 – System Monitoring
+    Route::get('/monitoring/logs', [ToolsController::class, 'insufficientLogging'])->name('tools.monitoring.logs');
     
-    // A10:2021 – Server-Side Request Forgery (SSRF)
-    Route::get('/a10/ssrf', [OwaspController::class, 'ssrfVulnerability'])->name('owasp.a10.ssrf');
+    // A10:2021 – External Services
+    Route::get('/external/services', [ToolsController::class, 'ssrfVulnerability'])->name('tools.external.services');
     
-    // Bonus Vulnerabilities
-    Route::get('/bonus/xss', [OwaspController::class, 'xssDemo'])->name('owasp.bonus.xss');
-    Route::post('/bonus/comment', [OwaspController::class, 'storeXssComment'])->name('owasp.bonus.comment');
+    // Additional Tools
+    Route::get('/content/preview', [ToolsController::class, 'xssDemo'])->name('tools.content.preview');
+    Route::post('/content/comment', [ToolsController::class, 'storeXssComment'])->name('tools.content.comment');
 });
 
 /*

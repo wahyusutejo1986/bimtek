@@ -102,7 +102,7 @@
                                 </p>
                                 <div class="flex justify-between items-center text-xs text-gray-500">
                                     <span>{{ $post->created_at->format('M d, Y') }}</span>
-                                    <a href="{{ route('vulnerable.post.view', $post->id) }}" 
+                                    <a href="{{ route('services.post.view', $post->id) }}" 
                                        class="text-red-600 hover:text-red-800">
                                         View Post →
                                     </a>
@@ -123,14 +123,14 @@
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-between">
                     <div class="space-x-2">
                         @if($user->posts->count() > 0)
-                        <a href="{{ route('vulnerable.post.edit', $user->posts->first()->id) }}" 
+                        <a href="{{ route('services.post.edit', $user->posts->first()->id) }}" 
                            class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded text-sm">
                             <i class="fas fa-edit mr-1"></i>
                             Edit Their Post (IDOR)
                         </a>
                         @endif
                     </div>
-                    <a href="{{ route('vulnerable.dashboard') }}" 
+                    <a href="{{ route('services.dashboard') }}" 
                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded text-sm">
                         <i class="fas fa-arrow-left mr-1"></i>
                         Back
@@ -149,7 +149,7 @@
                         <p class="text-gray-300 text-sm mb-2">Sequential access:</p>
                         <div class="space-y-1">
                             @for($i = max(1, $user->id - 2); $i <= $user->id + 2; $i++)
-                            <a href="{{ route('vulnerable.user.profile', $i) }}" 
+                            <a href="{{ route('services.user.profile', $i) }}" 
                                class="block text-red-400 hover:text-red-300 text-sm font-mono
                                       {{ $i == $user->id ? 'bg-gray-800 px-2 py-1 rounded' : '' }}">
                                 /vulnerable/user/{{ $i }} {{ $i == $user->id ? '(current)' : '' }}
@@ -161,7 +161,7 @@
                         <p class="text-gray-300 text-sm mb-2">Random user access:</p>
                         <div class="space-y-1">
                             @foreach([1, 5, 10, 25, 50, 100] as $testId)
-                            <a href="{{ route('vulnerable.user.profile', $testId) }}" 
+                            <a href="{{ route('services.user.profile', $testId) }}" 
                                class="block text-red-400 hover:text-red-300 text-sm font-mono">
                                 /vulnerable/user/{{ $testId }}
                             </a>

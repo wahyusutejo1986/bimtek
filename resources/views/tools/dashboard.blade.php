@@ -52,11 +52,11 @@
                             Access any user's data, edit posts without permission, bypass authorization checks.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a01.user', 1) }}" 
+                            <a href="{{ route('tools.a01.user', 1) }}" 
                                class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
                                 👤 View Any User Profile
                             </a>
-                            <a href="{{ route('owasp.a01.edit', 1) }}" 
+                            <a href="{{ route('tools.a01.edit', 1) }}" 
                                class="block w-full bg-red-600/20 hover:bg-red-600/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
                                 ✏️ Edit Any Post
                             </a>
@@ -76,7 +76,7 @@
                             Weak encryption, exposed password hashes, insecure data storage.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a02.passwords') }}" 
+                            <a href="{{ route('tools.a02.passwords') }}" 
                                class="block w-full bg-orange-600/20 hover:bg-orange-600/40 text-orange-300 py-2 px-4 rounded-lg text-center transition">
                                 🔍 View Password Hashes
                             </a>
@@ -96,11 +96,11 @@
                             SQL injection in search, authentication bypass, database manipulation.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a03.search') }}" 
+                            <a href="{{ route('tools.a03.search') }}" 
                                class="block w-full bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
                                 🔍 SQL Injection Search
                             </a>
-                            <a href="{{ route('owasp.a03.login') }}" 
+                            <a href="{{ route('tools.a03.login') }}" 
                                class="block w-full bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
                                 🔓 Vulnerable Login
                             </a>
@@ -120,7 +120,7 @@
                             Flawed security architecture, missing security controls, design weaknesses.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a04.reset') }}" 
+                            <a href="{{ route('tools.a04.reset') }}" 
                                class="block w-full bg-green-600/20 hover:bg-green-600/40 text-green-300 py-2 px-4 rounded-lg text-center transition">
                                 🔄 Insecure Password Reset
                             </a>
@@ -140,7 +140,7 @@
                             Debug mode enabled, sensitive info exposure, default configurations.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a05.debug') }}" 
+                            <a href="{{ route('tools.a05.debug') }}" 
                                class="block w-full bg-blue-600/20 hover:bg-blue-600/40 text-blue-300 py-2 px-4 rounded-lg text-center transition">
                                 🐛 Debug Information
                             </a>
@@ -160,7 +160,7 @@
                             Outdated libraries, dangerous functions, component vulnerabilities.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a06.components') }}" 
+                            <a href="{{ route('tools.a06.components') }}" 
                                class="block w-full bg-indigo-600/20 hover:bg-indigo-600/40 text-indigo-300 py-2 px-4 rounded-lg text-center transition">
                                 🧩 Component Analysis
                             </a>
@@ -180,7 +180,7 @@
                             Weak passwords, no rate limiting, detailed error messages.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a07.auth') }}" 
+                            <a href="{{ route('tools.a07.auth') }}" 
                                class="block w-full bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 py-2 px-4 rounded-lg text-center transition">
                                 🔐 Weak Authentication
                             </a>
@@ -200,7 +200,7 @@
                             Unsafe deserialization, untrusted sources, integrity violations.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a08.deserialize') }}" 
+                            <a href="{{ route('tools.a08.deserialize') }}" 
                                class="block w-full bg-pink-600/20 hover:bg-pink-600/40 text-pink-300 py-2 px-4 rounded-lg text-center transition">
                                 📤 Unsafe Deserialization
                             </a>
@@ -220,7 +220,7 @@
                             No security logging, insufficient monitoring, audit trail gaps.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a09.logging') }}" 
+                            <a href="{{ route('tools.a09.logging') }}" 
                                class="block w-full bg-gray-600/20 hover:bg-gray-600/40 text-gray-300 py-2 px-4 rounded-lg text-center transition">
                                 📊 Logging Analysis
                             </a>
@@ -240,7 +240,7 @@
                             Unvalidated URL fetching, internal network access, SSRF attacks.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.a10.ssrf') }}" 
+                            <a href="{{ route('tools.a10.ssrf') }}" 
                                class="block w-full bg-red-700/20 hover:bg-red-700/40 text-red-300 py-2 px-4 rounded-lg text-center transition">
                                 🔗 SSRF Testing
                             </a>
@@ -260,7 +260,7 @@
                             Reflected and stored XSS vulnerabilities, script injection.
                         </p>
                         <div class="space-y-2">
-                            <a href="{{ route('owasp.bonus.xss') }}" 
+                            <a href="{{ route('tools.bonus.xss') }}" 
                                class="block w-full bg-yellow-700/20 hover:bg-yellow-700/40 text-yellow-300 py-2 px-4 rounded-lg text-center transition">
                                 ⚡ XSS Playground
                             </a>

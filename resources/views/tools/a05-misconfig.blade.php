@@ -19,7 +19,7 @@
 
         <!-- Navigation -->
         <div class="mb-8 text-center">
-            <a href="{{ route('owasp.dashboard') }}" 
+            <a href="{{ route('tools.dashboard') }}" 
                class="inline-block bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded-lg transition">
                 ← Back to OWASP Dashboard
             </a>
