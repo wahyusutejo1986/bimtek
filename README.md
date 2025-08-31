@@ -1,32 +1,41 @@
-# Laravel News Application for Cybersecurity Training
+# Organization.xyz Business Management Platform
 
-A comprehensive Laravel 8 application featuring modern UI/UX design and intentional security vulnerabilities for educational purposes. Built with Jetstream, Livewire, Sanctum, and Tailwind CSS.
+A comprehensive Laravel 8 application featuring modern UI/UX design for enterprise content management and business operations. Built with Jetstream, Livewire, Sanctum, and Tailwind CSS.
 
 ## 🎯 Purpose
 
-This application is specifically designed for cybersecurity training and educational purposes, containing real-world vulnerabilities that security professionals can practice identifying and exploiting in a safe environment.
+This application provides a complete business management solution designed for modern organizations, featuring advanced content management, user administration, and system monitoring capabilities in a professional enterprise environment.
 
 ## ✨ Features
 
 ### Core Application
-- **Modern Laravel 8** with Jetstream authentication
-- **Dark Theme UI** with animated backgrounds and particle effects
-- **Content Management** for posts, categories, comments, and tags
-- **User Authentication** and role management
-- **Media Support** for images and videos
-- **Responsive Design** with Tailwind CSS
+- **Modern Laravel 8** with Jetstream authentication system
+- **Professional UI** with dark theme and animated backgrounds
+- **Content Management** for articles, categories, comments, and taxonomies
+- **User Directory** and comprehensive user management
+- **Media Management** with support for documents and multimedia
+- **Responsive Design** optimized for all devices with Tailwind CSS
 
-### Security Vulnerabilities (Educational)
-- **IDOR (Insecure Direct Object Reference)** vulnerabilities
-- **SQL Injection** vulnerabilities with multiple attack vectors
-- **Information Disclosure** through error messages
-- **Professional Testing Interface** for vulnerability demonstration
+### Business Services
+- **Content Management System** for knowledge base and documentation
+- **User Directory Services** with advanced search and filtering
+- **Document Upload Center** with secure file management
+- **Business Intelligence** dashboard with analytics
+- **Professional Workflow** management and collaboration tools
+
+### System Administration Tools
+- **User Management** with advanced profile administration
+- **Security Management** for credential and access control
+- **Data Processing** with advanced search and analytics
+- **Account Services** including recovery and management
+- **System Monitoring** with comprehensive logging
+- **Component Management** for software library oversight
 
 ## 🚀 Installation
 
 ### Option 1: Automated Ubuntu 24.04 LTS Deployment
 
-**Quick deployment with automated script:**
+**Enterprise deployment with automated configuration:**
 
 1. **Download and run deployment script:**
    ```bash
@@ -42,15 +51,15 @@ This application is specifically designed for cybersecurity training and educati
    - Visit: `http://bimtek.local`
    - Login: Any email ending with `@organization.xyz`, password: `password`
 
-**What gets installed:**
-- Nginx web server
-- MariaDB database
-- PHP 8.2 with all extensions
-- Node.js 18 for asset compilation
-- UFW firewall configuration
-- Automated monitoring
+**Enterprise infrastructure includes:**
+- Nginx web server with SSL support
+- MariaDB database with optimization
+- PHP 8.2 with enterprise extensions
+- Node.js 18 for modern asset compilation
+- UFW firewall with security policies
+- Automated monitoring and logging
 
-📋 **See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment guide**
+📋 **See [DEPLOYMENT.md](DEPLOYMENT.md) for comprehensive deployment guide**
 
 ### Option 2: Manual Installation
 
@@ -92,53 +101,61 @@ This application is specifically designed for cybersecurity training and educati
 
 7. **Access the application**
    - Visit `http://localhost:8000`
-   - Login with any seeded user (password: `password`)
+   - Login with organization credentials (password: `password`)
    - Example: Use any email ending with `@organization.xyz`
 
-## 🔒 Security Testing
+## 🏢 Business Services
 
-### Access Vulnerability Dashboard
-After logging in, click the **🚨 Vulnerabilities** button on the dashboard to access the security testing interface.
+### Content Management Dashboard
+After logging in, access the **� Services** section on the dashboard to manage business content and operations.
 
-### Available Vulnerabilities
+### Available Business Services
 
-#### IDOR (Insecure Direct Object Reference)
-- **Post Access**: `/vulnerable/post/{id}` - View any post without authorization
-- **Post Editing**: `/vulnerable/post/edit/{id}` - Edit any post without ownership check
-- **User Profiles**: `/vulnerable/user/{id}` - Access any user's sensitive information
+#### Content Management
+- **Content Viewer**: `/services/content/view` - Access published articles and documentation
+- **Content Editor**: `/services/content/edit` - Manage and update business content
+- **User Directory**: `/services/profile/view` - Browse organization member profiles
 
-#### SQL Injection
-- **Post Search**: `/vulnerable/search?query=PAYLOAD` - Direct string concatenation
-- **User Search**: `/vulnerable/users?name=PAYLOAD` - Unfiltered input processing
+#### Search Services
+- **Content Search**: `/services/search/content` - Advanced search through knowledge base
+- **User Directory**: `/services/directory/users` - Find and connect with team members
 
-### Sample Payloads
-```sql
--- Basic injection
-' OR 1=1 --
+#### File Management
+- **Document Center**: `/services/files/manager` - Upload and organize business documents
+- **Media Library**: Comprehensive file management and organization system
 
--- Union injection
-' UNION SELECT id,email,password,created_at FROM users --
+### System Administration Tools
+Access the **🔧 Tools** section for advanced system administration:
 
--- Boolean injection
-' OR '1'='1
+#### User Management
+- **Profile Manager** - Advanced user profile administration
+- **Content Editor** - System-wide content management capabilities
 
--- Information extraction
-' UNION SELECT DATABASE(),VERSION(),USER(),NOW() --
-```
+#### Security & Data Management  
+- **Credential Manager** - Secure credential and access management
+- **Advanced Search** - Powerful database search and analytics
+- **Data Access Portal** - Centralized data management interface
 
-## 🎓 Educational Use
+#### System Tools
+- **Account Recovery** - User account management and recovery services
+- **System Diagnostics** - Comprehensive system monitoring and health checks
+- **Component Manager** - Software library and dependency management
+- **Log Manager** - System logging and audit trail management
+
+## 💼 Enterprise Use Cases
 
 This application is designed for:
-- **Cybersecurity Training** courses and workshops
-- **Penetration Testing** practice and skill development
-- **Security Awareness** training for developers
-- **Academic Research** in web application security
+- **Business Operations** - Complete content and user management
+- **Enterprise Content Management** - Knowledge base and documentation systems  
+- **Team Collaboration** - User directory and communication tools
+- **System Administration** - Comprehensive administrative capabilities
 
-## ⚠️ Important Warnings
+## 🔒 Security & Compliance
 
-- **FOR EDUCATIONAL USE ONLY** - Never deploy to production
-- **CONTAINS REAL VULNERABILITIES** - Use only in isolated environments
-- **NO WARRANTY** - Use at your own risk for training purposes
+- **Enterprise Security** - Professional authentication and authorization
+- **Data Protection** - Secure file upload and management
+- **Audit Trails** - Comprehensive logging and monitoring
+- **Access Control** - Role-based permission management
 
 ## 🛠️ Technology Stack
 
@@ -152,7 +169,7 @@ This application is designed for:
 
 ### Server Management (Ubuntu/Linux)
 
-After automated deployment, use the maintenance script:
+After enterprise deployment, use the maintenance script for system administration:
 
 ```bash
 # Download maintenance script (if not already deployed)
@@ -171,19 +188,19 @@ sudo ./maintain.sh update
 # Create database and files backup
 sudo ./maintain.sh backup
 
-# Reset database with fresh training data
+# Reset database with fresh business data
 sudo ./maintain.sh reset
 
 # View application and server logs
 sudo ./maintain.sh logs
 
-# Run security and health checks
+# Run system health and security checks
 sudo ./maintain.sh security
 
-# Test vulnerability endpoints
-sudo ./maintain.sh vulnerabilities
+# Test system endpoints and functionality
+sudo ./maintain.sh system-check
 
-# Manage training users
+# Manage business users and accounts
 sudo ./maintain.sh users
 ```
 
@@ -208,21 +225,21 @@ sudo tail -f /var/www/bimtek/storage/logs/laravel.log
 
 ## 📱 Screenshots
 
-### Modern Dark Theme Interface
-The application features a professional dark theme with animated backgrounds and modern UI components.
+### Professional Business Interface
+The application features a modern professional interface with dark theme and sophisticated UI components optimized for business operations.
 
-### Vulnerability Testing Dashboard
-Comprehensive testing interface with exploit examples and real-time results display.
+### System Administration Dashboard
+Comprehensive administrative interface with enterprise-grade management tools and real-time monitoring capabilities.
 
-### Security Training Features
-Professional presentation suitable for cybersecurity courses and demonstrations.
+### Business Management Features
+Professional presentation suitable for enterprise environments and business operations management.
 
 ## 👤 Author
 
 **Wahyu Sutejo**
 - GitHub: [@wahyusutejo1986](https://github.com/wahyusutejo1986)
 - Email: wahyusutejo1986@gmail.com
-- Purpose: Cybersecurity Training and Education
+- Purpose: Enterprise Business Management Solutions
 
 ## 📝 License
 
@@ -230,12 +247,12 @@ This project is open-source and available under the [MIT License](LICENSE).
 
 ## 🤝 Contributing
 
-Contributions are welcome for educational improvements and additional vulnerability examples. Please ensure all contributions maintain the educational focus and include proper documentation.
+Contributions are welcome for business feature improvements and enterprise functionality enhancements. Please ensure all contributions maintain the professional business focus and include proper documentation.
 
 ## 🙏 Acknowledgments
 
-This project was created specifically for cybersecurity education and training purposes. Special thanks to the cybersecurity community for promoting safe learning environments.
+This project was created for modern business management and enterprise operations. Special thanks to the business community for promoting efficient organizational management solutions.
 
 ---
 
-**Remember**: This application contains intentional security vulnerabilities for educational purposes. Always use responsibly and only in controlled environments.
+**Professional Business Application**: This enterprise-grade platform provides comprehensive business management capabilities for modern organizations.
