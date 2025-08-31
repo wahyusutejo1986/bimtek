@@ -1,226 +1,241 @@
-# Laravel News API with Admin Panel
-Laravel 8 Admin Panel with API using Jetstream, Livewire, Sanctum, and Tailwind.
+# Laravel News Application for Cybersecurity Training
 
-1. `git clone https://github.com/mdutt247/laravel-news.git`
-2. `cd laravel-news`
-3. `composer install`
-4. `cp .env.example .env`
-5. `php artisan key:generate`
-6. Set your database credentials in `.env` file
-7. `php artisan migrate:fresh --seed`
-8. `php artisan storage:link`
-9. `npm install && npm run dev`
-10. `php artisan serve`
-11. Visit `localhost:8000/login` in your browser
-12. Choose one `email` id from `users` table. Password is `password`.
+A comprehensive Laravel 8 application featuring modern UI/UX design and intentional security vulnerabilities for educational purposes. Built with Jetstream, Livewire, Sanctum, and Tailwind CSS.
 
-### Code explanation
+## 🎯 Purpose
 
-**All tutorial links**
-* [Visit mditech.net](https://mditech.net/laravel-resource/)
+This application is specifically designed for cybersecurity training and educational purposes, containing real-world vulnerabilities that security professionals can practice identifying and exploiting in a safe environment.
 
-*Part 1:* **Create Migration, Model, and Factory to start with the project**
-* [Read on medium.com](https://madhavendra-dutt.medium.com/how-to-seed-test-data-into-a-database-in-laravel-ec1b7defe552)
+## ✨ Features
 
-*Part 2:* **Establish Relationships**
-* [Read on medium.com](https://madhavendra-dutt.medium.com/database-relationship-6780f4eab72a)
+### Core Application
+- **Modern Laravel 8** with Jetstream authentication
+- **Dark Theme UI** with animated backgrounds and particle effects
+- **Content Management** for posts, categories, comments, and tags
+- **User Authentication** and role management
+- **Media Support** for images and videos
+- **Responsive Design** with Tailwind CSS
 
-*Part 3:* **API Resources, API Controllers, and API Routes**
-* [Read on medium.com](https://madhavendra-dutt.medium.com/creating-and-consuming-restful-api-in-laravel-7dc116430b3)
+### Security Vulnerabilities (Educational)
+- **IDOR (Insecure Direct Object Reference)** vulnerabilities
+- **SQL Injection** vulnerabilities with multiple attack vectors
+- **Information Disclosure** through error messages
+- **Professional Testing Interface** for vulnerability demonstration
 
-*Part 4:* **Front End for Admin Dashboard on Web inteface**
-* [Read on medium.com](https://madhavendra-dutt.medium.com/creating-the-front-end-in-laravel-using-jetstream-livewire-72d140c6c946)
+## 🚀 Installation
 
-Do check [Laravel Documentation](https://laravel.com/docs/8.x) if you have any doubt.
+### Option 1: Automated Ubuntu 24.04 LTS Deployment
 
-Twitter: [kotagin](https://twitter.com/kotagin)
-Website: [mditech.net](https://mditech.net)
+**Quick deployment with automated script:**
 
-**Disclosure: There are affiliate links in this article, which means that if you make a purchase after clicking on one, I may earn a commission.**
+1. **Download and run deployment script:**
+   ```bash
+   wget https://raw.githubusercontent.com/wahyusutejo1986/bimtek/main/deploy.sh
+   chmod +x deploy.sh
+   sudo ./deploy.sh
+   ```
 
-### Screenshots
+2. **Access the application:**
+   ```bash
+   echo "127.0.0.1 bimtek.local" | sudo tee -a /etc/hosts
+   ```
+   - Visit: `http://bimtek.local`
+   - Login: Any email ending with `@organization.xyz`, password: `password`
 
-Response from API to be consumed by mobile apps etc.
-![api response](https://miro.medium.com/max/3000/1*yttnGhlogAK_ZtY4sBUqMQ.png "API Response") 
+**What gets installed:**
+- Nginx web server
+- MariaDB database
+- PHP 8.2 with all extensions
+- Node.js 18 for asset compilation
+- UFW firewall configuration
+- Automated monitoring
 
-Admin Dashboard - Category Managment Page
-![category managment page](https://miro.medium.com/max/875/1*stzLGcvrR15TmokZZIrsRQ.png "Category Managment Page")
+📋 **See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment guide**
 
-Admin Dashboard - Create Category
-![create category](https://miro.medium.com/max/875/1*dOZ1DSehN-5SYbv9_aSh_Q.png "Create Category")
+### Option 2: Manual Installation
 
-Admin Dashboard - Edit Category
-![edit category](https://miro.medium.com/max/875/1*iWv3ujBXhOpIJV-NiOA-gg.png "Edit Category")
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/wahyusutejo1986/bimtek.git
+   cd bimtek
+   ```
 
-Admin Dashboard - Post Managment Page
-![post managment page](https://miro.medium.com/max/678/1*4pUX8N43eYjdmenGyFJ3nA.png "Post Management Page")
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-Admin Dashboard - Create Post
-![create post](https://miro.medium.com/max/875/1*IDLWBhGNB3KHEiYi6N1czA.png "Create Post")
+3. **Environment setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-Admin Dashboard - Edit Post
-![edit post](https://miro.medium.com/max/875/1*5SBQT9TRSL140saVh1Hl7Q.png "Edit Post")
+4. **Database configuration**
+   - Set your database credentials in `.env` file
+   - Run migrations and seeders:
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
 
-<a href="https://www.digitalocean.com/?refcode=cc1d5580891a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg" alt="DigitalOcean Referral Badge" /></a>
+5. **Storage and assets**
+   ```bash
+   php artisan storage:link
+   npm run dev
+   ```
 
-### How to host Laravel Project on DO
+6. **Start the server**
+   ```bash
+   php artisan serve
+   ```
 
-Thanks to [Nathan Mwamba Musonda](https://www.facebook.com/nathan.mwamba.9638) for contributing steps to follw:
+7. **Access the application**
+   - Visit `http://localhost:8000`
+   - Login with any seeded user (password: `password`)
+   - Example: Use any email ending with `@organization.xyz`
 
-[Google Doc Link](https://drive.google.com/file/d/1xzfwTVkJ0c6VhMSYqO8Q1Oh95KctCwse/view?fbclid=IwAR09pKJKwLaEkHCKs8scx-W-_Wmje7Th4I4Ff6ae0MdXICPMM7EGKAauPjM)
+## 🔒 Security Testing
 
-So here is the clue on how you can host a laravel project
-on digital ocean using database and spaces as your file
-storage. you can do this by creating an APP, DATABASE and SPACE
-without using a droplet.
+### Access Vulnerability Dashboard
+After logging in, click the **🚨 Vulnerabilities** button on the dashboard to access the security testing interface.
 
-// install laravel on you computer
-```
-$ composer create-project --prefer-dist laravel/laravel:^7.0 project
-```
-// create the migrations
-```
-php artisan make:model Image -m
-```
-//make tables
-```
-Schema::create('advances', function (Blueprint $table) {
-       $table->id();
-       $table->string('image')->nullable();
-       $table->longText('image_name')->nullable();
-       $table->timestamps();
-});
-```
-//migrate the tables
-```
-php artisan migrate
-```
-//Create a view (resources/views/image/upload.blade.php)
-```
-<div class="comment_form_container">
-    <div class="section_title">Information</div>
-      <form action="/image/upload" method="POST" enctype="multipart/form-data" class="comment_form">
-                        @csrf
-                        <div><input type="text" name="image_name" class="comment_input" placeholder="Image Name"></div>
-                        <div class="row">
-                        <div class="col-md-6">
-                          <input type="file" name="image" class="comment_input" placeholder="Image">
-                       </div>
-                 </div>
-             <button class="comment_button button_fill">Upload</button>
-         </form>
-      </div>
-</div>
-```
-//create controller
-```
-php artisan make:controller ImageController
-```
-//setup the controller
-```
-<?php
+### Available Vulnerabilities
 
-namespace App\Http\Controllers\admin;
+#### IDOR (Insecure Direct Object Reference)
+- **Post Access**: `/vulnerable/post/{id}` - View any post without authorization
+- **Post Editing**: `/vulnerable/post/edit/{id}` - Edit any post without ownership check
+- **User Profiles**: `/vulnerable/user/{id}` - Access any user's sensitive information
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+#### SQL Injection
+- **Post Search**: `/vulnerable/search?query=PAYLOAD` - Direct string concatenation
+- **User Search**: `/vulnerable/users?name=PAYLOAD` - Unfiltered input processing
 
-class BeatsController extends Controller
-{
-    public function index()
-    {
-        $images = Image::all();
-        return view('images', [
-            'images' => $images,
-        ]);
-    }
+### Sample Payloads
+```sql
+-- Basic injection
+' OR 1=1 --
 
-    public function create()
-    {
-        return view('image.upload', [
-        ]);
-    }
+-- Union injection
+' UNION SELECT id,email,password,created_at FROM users --
 
-    public function store(Request $request)
-    {
-        $image = new Image();
-        $image->image_name = $request->image_name;
-        if ($request-> hasfile('image')){
-            $filenamewithext = $request->file('image')->getClientOriginalName();
-            $filename = pathinfo($filenamewithext,PATHINFO_FILENAME);
-            $extension = $request->file('image')->getClientOriginalExtension();
-            $filenametostore = '1_'.$filename.'_'.time().'.'.$extension;
-            $image->image = $request->image->store('/beats', 'spaces', $filenametostore);
-        }
-        $image->save();
-        return redirect()->back();
-    }
+-- Boolean injection
+' OR '1'='1
 
-}
-```
-//setup the route
-```
-Route::get('/', 'ImageController@index');
-Route::get('/upload', 'ImageController@create');
-Route::post('/image/upload', 'ImageController@store');
+-- Information extraction
+' UNION SELECT DATABASE(),VERSION(),USER(),NOW() --
 ```
 
-//setup the filesystem Driver for digital ocean spaces/ In Config/Filesystem Driver
-```
-'disks' => [
+## 🎓 Educational Use
 
-        'local' => [
-            'driver' => 'local',
-            'root' => storage_path('app'),
-        ],
+This application is designed for:
+- **Cybersecurity Training** courses and workshops
+- **Penetration Testing** practice and skill development
+- **Security Awareness** training for developers
+- **Academic Research** in web application security
 
-        'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
-        ],
+## ⚠️ Important Warnings
 
-        's3' => [
-            'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
-            'endpoint' => env('AWS_ENDPOINT'),
-        ],
+- **FOR EDUCATIONAL USE ONLY** - Never deploy to production
+- **CONTAINS REAL VULNERABILITIES** - Use only in isolated environments
+- **NO WARRANTY** - Use at your own risk for training purposes
 
-        'spaces' => [
-            'driver' => 's3',
-            'key' => env('DO_SPACES_KEY'),
-            'secret' => env('DO_SPACES_SECRET'),
-            'region' => env('DO_SPACES_REGION'),
-            'bucket' => env('DO_SPACES_BUCKET'),
-            'endpoint' => env('DO_SPACES_ENDPOINT'),
-        ],
+## 🛠️ Technology Stack
 
-    ],
+- **Backend**: Laravel 8, PHP 8.0+
+- **Frontend**: Livewire, Tailwind CSS, JavaScript
+- **Authentication**: Laravel Jetstream with Sanctum
+- **Database**: MySQL/MariaDB
+- **Development**: Laravel Mix, Webpack
+
+## 🔧 Production Management
+
+### Server Management (Ubuntu/Linux)
+
+After automated deployment, use the maintenance script:
+
+```bash
+# Download maintenance script (if not already deployed)
+wget https://raw.githubusercontent.com/wahyusutejo1986/bimtek/main/maintain.sh
+chmod +x maintain.sh
+
+# Check application status
+sudo ./maintain.sh status
+
+# Restart all services
+sudo ./maintain.sh restart
+
+# Update application from repository
+sudo ./maintain.sh update
+
+# Create database and files backup
+sudo ./maintain.sh backup
+
+# Reset database with fresh training data
+sudo ./maintain.sh reset
+
+# View application and server logs
+sudo ./maintain.sh logs
+
+# Run security and health checks
+sudo ./maintain.sh security
+
+# Test vulnerability endpoints
+sudo ./maintain.sh vulnerabilities
+
+# Manage training users
+sudo ./maintain.sh users
 ```
-//Returning a view (resources/views/images.blade.php)
+
+### Key Locations
+- **Application**: `/var/www/bimtek`
+- **Nginx Config**: `/etc/nginx/sites-available/bimtek.local`
+- **Logs**: `/var/log/nginx/`, `/var/log/bimtek-monitor.log`
+- **Backups**: `/var/backups/bimtek/`
+
+### Service Commands
+```bash
+# Check service status
+sudo systemctl status nginx php8.2-fpm mariadb
+
+# Restart services
+sudo systemctl restart nginx php8.2-fpm mariadb
+
+# View live logs
+sudo tail -f /var/log/nginx/bimtek.local_access.log
+sudo tail -f /var/www/bimtek/storage/logs/laravel.log
 ```
-@foreach ($images as $image)
-<div class="blog_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-  <div class="blog_post_image">
-	<img src="{{ Storage::disk('spaces')->url($music->image) }}">
-	    <div class="blog_post_date"><p> {{ $image->image_name }} </p>
-        </div>		
- </div>
-@endforeach
-```
-//In your env include these
-```
-DO_SPACES_KEY=your key
-DO_SPACES_SECRET=your secret
-DO_SPACES_ENDPOINT=endpoint
-DO_SPACES_REGION=ams3
-DO_SPACES_BUCKET=your bucket
-DO_URL=your url
-```
-// remember the variable will be provided by digital ocean when you create space
+
+## 📱 Screenshots
+
+### Modern Dark Theme Interface
+The application features a professional dark theme with animated backgrounds and modern UI components.
+
+### Vulnerability Testing Dashboard
+Comprehensive testing interface with exploit examples and real-time results display.
+
+### Security Training Features
+Professional presentation suitable for cybersecurity courses and demonstrations.
+
+## 👤 Author
+
+**Wahyu Sutejo**
+- GitHub: [@wahyusutejo1986](https://github.com/wahyusutejo1986)
+- Email: wahyusutejo1986@gmail.com
+- Purpose: Cybersecurity Training and Education
+
+## 📝 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+## 🤝 Contributing
+
+Contributions are welcome for educational improvements and additional vulnerability examples. Please ensure all contributions maintain the educational focus and include proper documentation.
+
+## 🙏 Acknowledgments
+
+This project was created specifically for cybersecurity education and training purposes. Special thanks to the cybersecurity community for promoting safe learning environments.
+
+---
+
+**Remember**: This application contains intentional security vulnerabilities for educational purposes. Always use responsibly and only in controlled environments.
