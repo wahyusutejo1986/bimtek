@@ -231,14 +231,6 @@
                                 <div class="text-sm opacity-90">Search Posts & Users</div>
                             </div>
                         </a>
-
-                        <a href="{{ route('tools.dashboard') }}" class="flex items-center p-4 bg-gradient-to-r from-green-600 to-teal-700 text-white rounded-xl hover:from-green-700 hover:to-teal-800 transition duration-300 transform hover:scale-105 border-2 border-green-300 relative overflow-hidden">
-                            <i class="fas fa-cogs text-2xl mr-3 relative z-10"></i>
-                            <div class="relative z-10">
-                                <div class="font-semibold">⚙️ System Tools</div>
-                                <div class="text-sm opacity-90">Admin Functions</div>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>

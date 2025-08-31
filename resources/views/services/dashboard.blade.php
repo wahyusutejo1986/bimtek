@@ -136,12 +136,20 @@
                         Powerful search functionality to find content across the platform.
                     </p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="border border-gray-200 rounded-lg p-4">
                             <h4 class="font-medium text-gray-900 mb-2">Content Search</h4>
                             <p class="text-sm text-gray-600 mb-3">Search through all posts and content</p>
                             <a href="{{ route('services.search') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded text-sm transition">
                                 Open Search →
+                            </a>
+                        </div>
+                        
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <h4 class="font-medium text-gray-900 mb-2">Business Analytics</h4>
+                            <p class="text-sm text-gray-600 mb-3">User statistics and data analytics dashboard</p>
+                            <a href="{{ route('services.analytics') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm transition">
+                                Analytics Dashboard →
                             </a>
                         </div>
                         

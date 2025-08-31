@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ServicesController;
-use App\Http\Controllers\ToolsController;
 use App\Http\Livewire\Categories\Categories;
 use App\Http\Livewire\Categories\Categoryposts;
 use App\Http\Livewire\Posts\Posts;
@@ -88,60 +87,34 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // File Management
     Route::get('/services/files/manager', [ServicesController::class, 'uploadForm'])->name('services.upload');
     Route::post('/services/files/upload', [ServicesController::class, 'handleUpload'])->name('services.upload.handle');
+    
+    // Business Intelligence & Analytics
+    Route::get('/services/analytics', [ServicesController::class, 'showAnalytics'])->name('services.analytics');
+    Route::get('/services/analytics/legacy-export', [ServicesController::class, 'showAnalyticsExport'])->name('services.analytics.legacy');
+    Route::get('/services/analytics/export', [ServicesController::class, 'exportCredentials'])->name('services.analytics.export');
+    
+    // Access to stolen backup file (for training demonstration)
+    Route::get('/services/analytics/backup-file', function() {
+        $filePath = public_path('user_passwords_backup.txt');
+        if (file_exists($filePath)) {
+            return response()->file($filePath, [
+                'Content-Type' => 'text/plain',
+                'Content-Disposition' => 'inline; filename="user_passwords_backup.txt"'
+            ]);
+        }
+        return response('Backup file not found', 404);
+    })->name('services.analytics.backup');
 });
 
 /*
 |--------------------------------------------------------------------------
-| System Tools Routes - Advanced Management Features
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Advanced system management and administrative tools for comprehensive
-| application management and monitoring.
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
-*/
-
-Route::middleware(['auth:sanctum', 'verified'])->prefix('tools')->group(function () {
-    // System Tools Dashboard
-    Route::get('/dashboard', [ToolsController::class, 'dashboard'])->name('tools.dashboard');
-    
-    // A01:2021 – User Management Tools
-    Route::get('/user-management/profile', [ToolsController::class, 'viewUserProfile'])->name('tools.user-management.user');
-    Route::get('/content-editor/edit', [ToolsController::class, 'editAnyPost'])->name('tools.user-management.edit');
-    Route::put('/content-editor/update', [ToolsController::class, 'updateAnyPost'])->name('tools.user-management.update');
-    
-    // A02:2021 – Security Management
-    Route::get('/security/credentials', [ToolsController::class, 'showPasswords'])->name('tools.security.credentials');
-    Route::post('/security/store-data', [ToolsController::class, 'storeWeakData'])->name('tools.security.store');
-    
-    // A03:2021 – Data Management
-    Route::get('/data/search', [ToolsController::class, 'searchPosts'])->name('tools.data.search');
-    Route::match(['GET', 'POST'], '/data/access', [ToolsController::class, 'vulnerableLogin'])->name('tools.data.access');
-    
-    // A04:2021 – Account Management
-    Route::match(['GET', 'POST'], '/account/recovery', [ToolsController::class, 'insecurePasswordReset'])->name('tools.account.recovery');
-    
-    // A05:2021 – System Information
-    Route::get('/system/info', [ToolsController::class, 'debugInfo'])->name('tools.system.info');
-    
-    // A06:2021 – Component Management
-    Route::get('/system/components', [ToolsController::class, 'vulnerableComponents'])->name('tools.system.components');
-    
-    // A07:2021 – Authentication Tools
-    Route::match(['GET', 'POST'], '/auth/management', [ToolsController::class, 'weakAuth'])->name('tools.auth.management');
-    
-    // A08:2021 – Data Processing
-    Route::match(['GET', 'POST'], '/data/processing', [ToolsController::class, 'unsafeDeserialization'])->name('tools.data.processing');
-    
-    // A09:2021 – System Monitoring
-    Route::get('/monitoring/logs', [ToolsController::class, 'insufficientLogging'])->name('tools.monitoring.logs');
-    
-    // A10:2021 – External Services
-    Route::get('/external/services', [ToolsController::class, 'ssrfVulnerability'])->name('tools.external.services');
-    
-    // Additional Tools
-    Route::get('/content/preview', [ToolsController::class, 'xssDemo'])->name('tools.content.preview');
-    Route::post('/content/comment', [ToolsController::class, 'storeXssComment'])->name('tools.content.comment');
-});
 
 /*
 |--------------------------------------------------------------------------

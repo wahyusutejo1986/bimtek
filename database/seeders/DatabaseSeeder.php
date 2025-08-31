@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         // Use the new business content seeder for realistic enterprise data
         $this->call([
             BusinessContentSeeder::class,
+            TestUsersSeeder::class, // Add 5 test users with known passwords
         ]);
     }
 }

@@ -127,7 +127,7 @@
                                 <i class="fas fa-user text-white"></i>
                             </div>
                             <div class="ml-3">
-                                <p class="text-sm font-medium sidebar-user-info">{{ Auth::user()->name }}</p>
+                                <p class="text-sm font-medium sidebar-user-info">{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</p>
                                 <p class="text-xs sidebar-user-email">{{ Auth::user()->email }}</p>
                             </div>
                         </div>

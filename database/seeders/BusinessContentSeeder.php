@@ -32,8 +32,8 @@ class BusinessContentSeeder extends Seeder
         Tag::truncate();
         Category::truncate();
         
-        // Keep existing users but create some additional business users
-        User::factory(25)->create();
+        // Keep existing users but create additional business users for comprehensive dataset
+        User::factory(100)->create();
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
