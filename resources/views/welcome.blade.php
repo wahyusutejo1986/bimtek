@@ -54,12 +54,53 @@
             
             .text-enterprise-white {
                 color: #ffffff;
-                text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
             }
             
             .text-enterprise-soft {
+                color: rgba(255, 255, 255, 0.98);
+                text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .text-enterprise-muted {
+                color: rgba(255, 255, 255, 0.85);
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+            }
+            
+            /* Enhanced text contrast for features section */
+            .text-feature-heading {
+                color: #1f2937;
+                font-weight: 700;
+            }
+            
+            .text-feature-content {
+                color: #374151;
+                line-height: 1.7;
+            }
+            
+            .text-feature-link {
+                color: #2563eb;
+                font-weight: 600;
+            }
+            
+            .text-feature-link:hover {
+                color: #1d4ed8;
+            }
+            
+            /* Stats section enhanced contrast */
+            .text-stats-white {
+                color: #ffffff;
+                text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+            }
+            
+            .text-stats-light {
                 color: rgba(255, 255, 255, 0.95);
-                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+            }
+            
+            .text-stats-muted {
+                color: rgba(255, 255, 255, 0.8);
+                text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
             }
             
             .enterprise-card {
@@ -291,7 +332,7 @@
     </head>
     <body class="antialiased">
         <!-- Enterprise Navigation -->
-        <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-lg shadow-xl border-b border-gray-100">
+        <nav class="fixed w-full z-50 bg-white shadow-xl border-b border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-20">
                     <div class="flex items-center">
@@ -314,7 +355,7 @@
                                     Business Dashboard
                                 </a>
                             @else
-                                <a href="{{ route('login') }}" class="text-gray-600 hover:text-blue-600 px-4 py-2 rounded-lg text-sm font-semibold transition duration-200">
+                                <a href="{{ route('login') }}" class="text-gray-800 hover:text-blue-600 px-4 py-2 rounded-lg text-sm font-semibold transition duration-200">
                                     Sign In
                                 </a>
                                 @if (Route::has('register'))
@@ -386,18 +427,18 @@
                         </div>
                         
                         <!-- Trust Indicators -->
-                        <div class="flex items-center space-x-8 text-enterprise-soft">
+                        <div class="flex items-center space-x-8 text-enterprise-muted">
                             <div class="flex items-center">
-                                <i class="fas fa-shield-alt text-green-400 mr-2"></i>
-                                <span class="text-sm font-medium">Enterprise Security</span>
+                                <i class="fas fa-shield-alt text-green-400 mr-2 text-lg"></i>
+                                <span class="text-sm font-semibold">Enterprise Security</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-clock text-blue-400 mr-2"></i>
-                                <span class="text-sm font-medium">24/7 Support</span>
+                                <i class="fas fa-clock text-blue-400 mr-2 text-lg"></i>
+                                <span class="text-sm font-semibold">24/7 Support</span>
                             </div>
                             <div class="flex items-center">
-                                <i class="fas fa-chart-line text-cyan-400 mr-2"></i>
-                                <span class="text-sm font-medium">Scalable Solutions</span>
+                                <i class="fas fa-chart-line text-cyan-400 mr-2 text-lg"></i>
+                                <span class="text-sm font-semibold">Scalable Solutions</span>
                             </div>
                         </div>
                     </div>
@@ -447,7 +488,7 @@
                         Comprehensive Business
                         <span class="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Management Suite</span>
                     </h2>
-                    <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium">
                         Everything your organization needs to streamline operations, enhance productivity, and drive sustainable growth in today's competitive landscape.
                     </p>
                 </div>
@@ -457,9 +498,9 @@
                         <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-chart-line text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Business Intelligence</h3>
-                        <p class="text-gray-600 leading-relaxed">Advanced analytics and real-time reporting tools to make data-driven decisions and monitor KPIs across all business units.</p>
-                        <div class="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                        <h3 class="text-xl font-bold text-feature-heading mb-4">Business Intelligence</h3>
+                        <p class="text-feature-content leading-relaxed">Advanced analytics and real-time reporting tools to make data-driven decisions and monitor KPIs across all business units.</p>
+                        <div class="mt-6 flex items-center text-sm text-feature-link font-medium">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Explore Analytics
                         </div>
@@ -469,9 +510,9 @@
                         <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-users-cog text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Team Management</h3>
-                        <p class="text-gray-600 leading-relaxed">Comprehensive user access control, role-based permissions, and team collaboration tools for seamless organizational workflow.</p>
-                        <div class="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                        <h3 class="text-xl font-bold text-feature-heading mb-4">Team Management</h3>
+                        <p class="text-feature-content leading-relaxed">Comprehensive user access control, role-based permissions, and team collaboration tools for seamless organizational workflow.</p>
+                        <div class="mt-6 flex items-center text-sm text-feature-link font-medium">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Manage Teams
                         </div>
@@ -481,9 +522,9 @@
                         <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-file-alt text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Document Processing</h3>
-                        <p class="text-gray-600 leading-relaxed">Intelligent document management with automated processing, secure storage, and collaborative editing capabilities.</p>
-                        <div class="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                        <h3 class="text-xl font-bold text-feature-heading mb-4">Document Processing</h3>
+                        <p class="text-feature-content leading-relaxed">Intelligent document management with automated processing, secure storage, and collaborative editing capabilities.</p>
+                        <div class="mt-6 flex items-center text-sm text-feature-link font-medium">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Process Documents
                         </div>
@@ -493,9 +534,9 @@
                         <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-search text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Enterprise Search</h3>
-                        <p class="text-gray-600 leading-relaxed">Powerful search engine with advanced filtering, categorization, and content discovery across all business data.</p>
-                        <div class="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                        <h3 class="text-xl font-bold text-feature-heading mb-4">Enterprise Search</h3>
+                        <p class="text-feature-content leading-relaxed">Powerful search engine with advanced filtering, categorization, and content discovery across all business data.</p>
+                        <div class="mt-6 flex items-center text-sm text-feature-link font-medium">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Search Content
                         </div>
@@ -505,9 +546,9 @@
                         <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-shield-alt text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">Security & Compliance</h3>
-                        <p class="text-gray-600 leading-relaxed">Enterprise-grade security with multi-factor authentication, audit trails, and compliance management for regulatory requirements.</p>
-                        <div class="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                        <h3 class="text-xl font-bold text-feature-heading mb-4">Security & Compliance</h3>
+                        <p class="text-feature-content leading-relaxed">Enterprise-grade security with multi-factor authentication, audit trails, and compliance management for regulatory requirements.</p>
+                        <div class="mt-6 flex items-center text-sm text-feature-link font-medium">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Security Tools
                         </div>
@@ -517,9 +558,9 @@
                         <div class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
                             <i class="fas fa-cogs text-2xl text-white"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-4">System Administration</h3>
-                        <p class="text-gray-600 leading-relaxed">Comprehensive admin tools for system monitoring, performance optimization, and infrastructure management across all platforms.</p>
-                        <div class="mt-6 flex items-center text-sm text-blue-600 font-medium">
+                        <h3 class="text-xl font-bold text-feature-heading mb-4">System Administration</h3>
+                        <p class="text-feature-content leading-relaxed">Comprehensive admin tools for system monitoring, performance optimization, and infrastructure management across all platforms.</p>
+                        <div class="mt-6 flex items-center text-sm text-feature-link font-medium">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Admin Tools
                         </div>
@@ -556,43 +597,43 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center animate-fade-in-up-delay">
                     <div class="enterprise-card p-8 rounded-2xl">
-                        <div class="stat-number text-5xl font-black mb-3">850+</div>
-                        <div class="text-gray-600 font-semibold text-lg">Enterprise Clients</div>
-                        <div class="text-gray-500 text-sm mt-2">Global organizations trust our platform</div>
+                        <div class="stat-number text-5xl font-black mb-3 text-stats-white">850+</div>
+                        <div class="text-stats-light font-semibold text-lg">Enterprise Clients</div>
+                        <div class="text-stats-muted text-sm mt-2">Global organizations trust our platform</div>
                     </div>
                     <div class="enterprise-card p-8 rounded-2xl">
-                        <div class="stat-number text-5xl font-black mb-3">99.9%</div>
-                        <div class="text-gray-600 font-semibold text-lg">System Uptime</div>
-                        <div class="text-gray-500 text-sm mt-2">Enterprise-grade reliability</div>
+                        <div class="stat-number text-5xl font-black mb-3 text-stats-white">99.9%</div>
+                        <div class="text-stats-light font-semibold text-lg">System Uptime</div>
+                        <div class="text-stats-muted text-sm mt-2">Enterprise-grade reliability</div>
                     </div>
                     <div class="enterprise-card p-8 rounded-2xl">
-                        <div class="stat-number text-5xl font-black mb-3">2.5M+</div>
-                        <div class="text-gray-600 font-semibold text-lg">Transactions Processed</div>
-                        <div class="text-gray-500 text-sm mt-2">Monthly business operations</div>
+                        <div class="stat-number text-5xl font-black mb-3 text-stats-white">2.5M+</div>
+                        <div class="text-stats-light font-semibold text-lg">Transactions Processed</div>
+                        <div class="text-stats-muted text-sm mt-2">Monthly business operations</div>
                     </div>
                     <div class="enterprise-card p-8 rounded-2xl">
-                        <div class="stat-number text-5xl font-black mb-3">47%</div>
-                        <div class="text-gray-600 font-semibold text-lg">Productivity Increase</div>
-                        <div class="text-gray-500 text-sm mt-2">Average improvement for clients</div>
+                        <div class="stat-number text-5xl font-black mb-3 text-stats-white">47%</div>
+                        <div class="text-stats-light font-semibold text-lg">Productivity Increase</div>
+                        <div class="text-stats-muted text-sm mt-2">Average improvement for clients</div>
                     </div>
                 </div>
 
                 <!-- Trust Indicators -->
-                <div class="mt-20 flex flex-wrap justify-center items-center gap-12 opacity-60 animate-fade-in-up-delay-2">
-                    <div class="flex items-center text-gray-400">
-                        <i class="fas fa-certificate text-2xl mr-3"></i>
+                <div class="mt-20 flex flex-wrap justify-center items-center gap-12 opacity-80 animate-fade-in-up-delay-2">
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-certificate text-2xl mr-3 text-cyan-400"></i>
                         <span class="font-semibold">ISO 27001 Certified</span>
                     </div>
-                    <div class="flex items-center text-gray-400">
-                        <i class="fas fa-shield-alt text-2xl mr-3"></i>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-shield-alt text-2xl mr-3 text-blue-400"></i>
                         <span class="font-semibold">SOC 2 Type II Compliant</span>
                     </div>
-                    <div class="flex items-center text-gray-400">
-                        <i class="fas fa-lock text-2xl mr-3"></i>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-lock text-2xl mr-3 text-green-400"></i>
                         <span class="font-semibold">GDPR Ready</span>
                     </div>
-                    <div class="flex items-center text-gray-400">
-                        <i class="fas fa-award text-2xl mr-3"></i>
+                    <div class="flex items-center text-gray-300">
+                        <i class="fas fa-award text-2xl mr-3 text-purple-400"></i>
                         <span class="font-semibold">Enterprise Security</span>
                     </div>
                 </div>
