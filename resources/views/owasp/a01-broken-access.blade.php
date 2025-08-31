@@ -1,6 +1,10 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            🚪 A01:2021 - Broken Access Control
+        </h2>
+    </x-slot>
 
-@section('content')
 <div class="min-h-screen bg-gradient-to-br from-gray-900 via-red-900 to-black py-12">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
@@ -147,4 +151,4 @@
 
     </div>
 </div>
-@endsection
+</x-app-layout>

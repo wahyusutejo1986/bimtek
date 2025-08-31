@@ -1,6 +1,10 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            🔥 OWASP Top 10 2021 - Advanced Cybersecurity Training
+        </h2>
+    </x-slot>
 
-@section('content')
 <div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 relative overflow-hidden">
     <!-- Animated Background -->
     <div class="absolute inset-0 opacity-10">
@@ -335,4 +339,4 @@
 .shape-4 { @apply w-28 h-28 bottom-32 right-1/3 animate-bounce; animation-delay: 0.5s; }
 .shape-5 { @apply w-36 h-36 top-1/2 left-1/2 animate-bounce; animation-delay: 1.5s; }
 </style>
-@endsection
+</x-app-layout>
